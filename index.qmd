@@ -1,0 +1,53 @@
+---
+title: <center> My Professional Website
+---
+
+<center>
+
+### **About**
+
+With a strong background in IT program and project management, I excel at delivering transformative enterprise solutions and driving digital innovation across diverse industries. I have successfully led high-impact initiatives, overseeing P&L, managing cross-functional programs, and building high-performing teams to deliver scalable, results-driven solutions. My expertise includes strategic planning, end-to-end project delivery, and process optimization, ensuring complex programs are executed efficiently and achieve measurable value. By focusing on innovation, collaboration, and operational excellence, I drive impactful outcomes that align with organizational goals and create lasting success.
+
+[Learn more about my professional background](https://www.linkedin.com/in/kyleshaddox/ "Open LinkedIn Profile")
+
+</center>
+
+<center>
+
+### I am also a student at Baruch University
+
+</center>
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+if(!require("leaflet")){
+    options(repos=c(CRAN="https://cloud.r-project.org"))
+    install.packages("leaflet")
+    stopifnot(require("leaflet"))
+}
+
+baruch_longitude <- -73.98333
+baruch_latitude  <- +40.75028
+
+leaflet() |>
+  addTiles() |>
+  setView(baruch_longitude, baruch_latitude, zoom=17) |>
+  addPopups(baruch_longitude, baruch_latitude, 
+            "I am a Master's student at <b>Baruch College</b>!")
+```
+
+<Center>
+
+```{r}
+#| include: false
+1+1
+```
+
+------------------------------------------------------------------------
+
+Last Updated: `r format(Sys.time(), "%A %m %d, %Y at %H:%M%p")`
+
+</Center>
