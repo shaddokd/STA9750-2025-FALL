@@ -1,20 +1,22 @@
 project:
   type: website
   output-dir: docs
-
 website:
   title: "STA 9750 Submission Material"
-  description:
-    Course Projects for STA 9750 at Baruch College
+  description: "Course Projects for STA 9750 at Baruch College"
   site-url: "https://<shaddokd>.github.io/STA9750-2025-FALL/"
   navbar:
     background: primary
     search: false
+    right:
+      - href: index.qmd
+        text: Home
+      - href: mp01.qmd
+        text: Mini Project One
     
 format:
   html:
     theme: lux
     toc: false
-
 editor:
   mode: source
