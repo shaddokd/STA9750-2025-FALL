@@ -13,6 +13,8 @@ website:
         text: Home
       - href: mp01.qmd
         text: Mini Project One
+      - href: mp02.qmd
+        text: Mini Project Two
     
 format:
   html:
