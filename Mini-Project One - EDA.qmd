@@ -1,0 +1,28 @@
+---
+title: "Mini-Project One, Netflix Top 10 Data"
+author: "Kyle Shaddox"
+format: html
+execute:
+  DBMS: false
+---
+
+```{r}
+# Load required packages
+library(dplyr)
+library(readr)
+
+# Load the country top 10 CSV and convert "N/A" to NA
+COUNTRY_TOP_10 <- read_csv("data/mp01/country_top10_alltime.csv", na = "N/A", show_col_types = FALSE)
+
+# Verify column names
+colnames(COUNTRY_TOP_10)
+
+# Fix season_title NAs
+COUNTRY_TOP_10 <- COUNTRY_TOP_10 %>%
+  mutate(season_title = if_else(season_title == "N/A" | season_title == "", NA_character_, season_title))
+
+# Count the number of unique countries
+num_countries <- COUNTRY_TOP_10 %>%
+  distinct(country_name) %>%
+  count() %>%
+  pull(n)
