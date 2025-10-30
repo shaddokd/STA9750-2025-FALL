@@ -1,1 +1,1 @@
-Sitemap: https://<shaddokd>.github.io/STA9750-2025-FALL/sitemap.xml
+Sitemap: https://shaddokd.github.io/STA9750-2025-FALL/sitemap.xml
