@@ -17,7 +17,7 @@ website:
         text: Mini Project Two
       - href: mp03.qmd
         text: Mini Project Three
-      - href: nyc_311_analysis_project.qmd
+      - href: gp01.qmd
         text: Final Project
     
 format:
