@@ -17,9 +17,10 @@ website:
         text: Mini Project Two
       - href: mp03.qmd
         text: Mini Project Three
+      - href: mp04.qmd
+        text: Mini Project Four
       - href: gp01.qmd
         text: Final Project
-    
 format:
   html:
     theme: lux
