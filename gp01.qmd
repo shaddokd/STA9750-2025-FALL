@@ -455,10 +455,9 @@ cat("PLACEHOLDER: ANOVA results and statistical significance testing will go her
 
 **Research Question:** Do certain types of quality-of-life complaints get resolved faster in wealthier neighborhoods?
 
-```{r juan-analysis}
-# Juan's analysis code here - PLACEHOLDER
+```{r juan-analysis, message=FALSE, warning=FALSE}
 cat("=== JUAN'S ANALYSIS SECTION ===\n")
-cat("Research Question: Complaint type resolution by wealth?\n\n")
+cat("Research Question: Do certain types of quality-of-life complaints get resolved faster in wealthier neighborhoods?\n\n")
 
 # Placeholder data for complaint types by wealth
 placeholder_complaint_wealth <- tibble(
@@ -468,22 +467,84 @@ placeholder_complaint_wealth <- tibble(
   request_count = sample(200:800, 8)
 )
 
-kable(placeholder_complaint_wealth, caption = "PLACEHOLDER: Response Times by Complaint Type and Wealth")
+# Table
+kable(
+  placeholder_complaint_wealth,
+  caption = "PLACEHOLDER: Response Times by Complaint Type and Wealth"
+)
 
-# Placeholder visualization
-ggplot(placeholder_complaint_wealth, aes(x = complaint_category, y = avg_response_time, fill = wealth_category)) +
+# ------------------------------------------------
+# 1) Bar chart of average response times
+# ------------------------------------------------
+ggplot(placeholder_complaint_wealth,
+       aes(x = complaint_category,
+           y = avg_response_time,
+           fill = wealth_category)) +
   geom_col(position = "dodge") +
   labs(
     title = "PLACEHOLDER: Response Times by Complaint Type and Wealth",
-    subtitle = "Your team will analyze actual complaint resolution patterns",
+    subtitle = "Average resolution times by complaint category and neighborhood wealth",
     x = "Complaint Category",
     y = "Average Response Time (Days)",
     fill = "Neighborhood Type"
   ) +
   theme_minimal()
 
+# ------------------------------------------------
+# 2) Boxplot: simulated distribution of response times
+# ------------------------------------------------
+set.seed(123)
+
+expanded_data <- placeholder_complaint_wealth %>%
+  rowwise() %>%
+  mutate(response_time = list(rnorm(
+    n    = 50,
+    mean = avg_response_time,
+    sd   = 1.5
+  ))) %>%
+  unnest(response_time)
+
+ggplot(expanded_data,
+       aes(x = complaint_category,
+           y = response_time,
+           fill = wealth_category)) +
+  geom_boxplot(alpha = 0.7, outlier.alpha = 0.3) +
+  labs(
+    title = "Distribution of Complaint Resolution Times by Neighborhood Wealth",
+    subtitle = "Simulated data based on average response times",
+    x = "Complaint Category",
+    y = "Response Time (Days)",
+    fill = "Wealth Category"
+  ) +
+  theme_minimal()
+
+# ------------------------------------------------
+# 3) Gap line chart: Less Wealthy - Wealthy
+# ------------------------------------------------
+gap_data <- placeholder_complaint_wealth %>%
+  select(complaint_category, wealth_category, avg_response_time) %>%
+  pivot_wider(
+    names_from  = wealth_category,
+    values_from = avg_response_time
+  ) %>%
+  mutate(gap = `Less Wealthy` - Wealthy)
+
+ggplot(gap_data,
+       aes(x = complaint_category,
+           y = gap,
+           group = 1)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 3) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  labs(
+    title = "Gap in Complaint Resolution Times by Complaint Type",
+    subtitle = "Positive values indicate slower resolution in less wealthy neighborhoods",
+    x = "Complaint Category",
+    y = "Gap in Response Time (Days): Less Wealthy - Wealthy"
+  ) +
+  theme_minimal()
+
 cat("PLACEHOLDER: Statistical comparison tests will go here\n")
-```
 
 ## 5.4 Kyle's Analysis: Borough and Neighborhood Disparities
 
