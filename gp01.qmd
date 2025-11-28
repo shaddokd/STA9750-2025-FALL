@@ -125,48 +125,53 @@ cat("Key Variables: Property values, assessment data, geographic identifiers\n")
 ## Data Acquisition
 
 ### 3.1 Load 311 Service Request Data
-```{r load-311-data}
-# Function to load 311 data via Socrata API
-load_311_data <- function(limit = 100000, offset = 0) {
-  # Base URL for NYC Open Data Socrata API
-  base_url <- "https://data.cityofnewyork.us/resource/erm2-nwe9.json"
-  
-  # Create request with parameters
-  req <- request(base_url) |>
-    req_url_query(
-      `$limit` = limit,
-      `$offset` = offset,
-      `$where` = "created_date >= '2023-01-01T00:00:00.000'"  # Recent data
-    )
-  
-  # Execute request and parse JSON
-  # resp <- req_perform(req)
-  # data <- resp_body_json(resp, simplifyVector = TRUE)
-  
-  # For development - create sample structure
-  sample_311 <- tibble(
-    unique_key = 1:1000,
-    created_date = seq.POSIXt(as.POSIXct("2023-01-01"), as.POSIXct("2023-12-31"), length.out = 1000),
-    closed_date = created_date + days(sample(1:30, 1000, replace = TRUE)),
-    complaint_type = sample(c("Noise - Residential", "Blocked Driveway", "Illegal Parking", 
-                             "Street Condition", "Sanitation Condition"), 1000, replace = TRUE),
-    borough = sample(c("MANHATTAN", "BROOKLYN", "QUEENS", "BRONX", "STATEN ISLAND"), 1000, replace = TRUE),
-    latitude = runif(1000, 40.4, 40.9),
-    longitude = runif(1000, -74.3, -73.7),
-    status = sample(c("Closed", "Open", "Pending"), 1000, replace = TRUE, prob = c(0.8, 0.1, 0.1))
-  )
-  
-  return(sample_311)
+```{r}
+#| code-fold: true
+#| code-summary: "show historical jobs"
+#| message: false
+#| warning: false
+
+
+.libPaths("/Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library/RSocrata")
+library(RSocrata)
+library(dplyr)
+library(DT)
+
+suppressPackageStartupMessages({
+  library(RSocrata)
+  library(dplyr)
+})
+
+# Define the file path where you'll save the data
+data_file <- "nyc_311_data_2024_jan_apr.rds"
+
+# Check if the file already exists
+if (file.exists(data_file)) {
+  # If it exists, just read it
+  df <- readRDS(data_file)
+} else {
+  # If it doesn't exist, download it
+
+  # The API endpoint with first 4 months of 2024 filter
+  url <- "https://data.cityofnewyork.us/resource/erm2-nwe9.json?$where=created_date>='2024-01-01T00:00:00' AND created_date<'2024-05-01T00:00:00'"
+
+  # Download the data
+  df <- read.socrata(url)
+
+  # Save to file
+  saveRDS(df, data_file)
+
 }
-
-# Load initial dataset
-df_311 <- load_311_data()
-
-# Display basic information
-cat("311 Data Loaded:\n")
-cat("Rows:", nrow(df_311), "\n")
-cat("Columns:", ncol(df_311), "\n")
-cat("Date Range:", as.character(range(df_311$created_date, na.rm = TRUE)), "\n")
+# Display first 1000 rows only
+datatable(head(df, 1000),
+          options = list(
+            pageLength = 10,
+            scrollX = TRUE,
+            autoWidth = TRUE
+          ),
+          filter = 'top',
+          class = 'cell-border stripe',
+          caption = "Showing first 1,000 rows of data")
 ```
 
 ### 3.2 Load Property Valuation Data
@@ -328,6 +333,202 @@ ggplot(complaint_dist, aes(x = reorder(complaint_category, n), y = n, fill = com
   ) +
   theme_minimal() +
   theme(legend.position = "none")
+```
+
+# Complaint Types
+
+```{r}
+#| code-fold: true
+#| code-summary: "show complaints type"
+#| message: false
+#| warning: false
+library(dplyr)
+library(ggplot2)
+library(scales)
+library(stringr)
+
+# Aggregate by complaint_type
+complaint_summary <- df %>%
+  group_by(complaint_type) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
+
+# Convert complaint_type to Title Case for readability
+complaint_summary <- complaint_summary %>%
+  mutate(complaint_type = str_to_title(complaint_type))
+
+# Plot top 15 complaint types with labels
+ggplot(complaint_summary %>% slice_max(count, n = 15),
+       aes(x = reorder(complaint_type, count), y = count)) +
+  geom_col(fill = "#2E86C1", width = 0.7) +
+  geom_text(aes(label = comma(count)),
+            hjust = -0.05, size = 3.5, family = "sans") +
+  coord_flip(clip = "off") +  # allow labels to go past plot area
+  scale_y_continuous(labels = comma, expand = expansion(mult = c(0, 0.15))) +
+  labs(
+    title = "Top 15 Complaint Types (Jan–Apr 2024)",
+    x = "Complaint Type",
+    y = "Number of Complaints"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold", size = 14),
+    axis.title.x = element_text(margin = margin(t = 10)),
+    axis.title.y = element_text(margin = margin(r = 10)),
+    plot.margin = margin(10, 40, 10, 10)  # extra space on right for labels
+  )
+```
+# Complaints by Borough
+```{r}
+#| code-fold: true
+#| code-summary: "show complaints by borough"
+#| message: false
+#| warning: false
+
+
+# Aggregate by borough
+library(dplyr)
+library(ggplot2)
+library(scales)
+library(stringr)
+
+mako_colors <- c("#0D0887", "#6A00A8", "#B12A90", "#E16462", "#FCA636", "#F0F921")
+# Aggregate by borough
+borough_summary <- df %>%
+  group_by(borough) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count)) %>%
+  mutate(borough = str_to_title(borough))  # title case
+
+# Plot
+ggplot(borough_summary,
+       aes(x = count, y = reorder(borough, count), fill = borough)) +
+  geom_col(width = 0.6, show.legend = FALSE) +
+  geom_text(aes(label = comma(count)),
+            hjust = -0.05, size = 4, family = "sans") +  # data labels
+  scale_fill_manual(values = mako_colors) +
+  scale_x_continuous(labels = comma, expand = expansion(mult = c(0, 0.15))) +  # fix scientific notation
+  labs(
+    title = "311 Complaints by Borough (Jan–Apr 2024)",
+    x = "Number of Complaints",
+    y = "Borough"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold", size = 14),
+    axis.title.x = element_text(margin = margin(t = 10)),
+    axis.title.y = element_text(margin = margin(r = 10)),
+    plot.margin = margin(10, 40, 10, 10)  # extra space for labels
+  ) +
+  coord_cartesian(clip = "off")  # allow data labels to extend past plot area
+
+
+```
+
+# Location Types
+```{r}
+#| code-fold: true
+#| code-summary: "show location type"
+#| message: false
+#| warning: false
+
+
+# Aggregate by borough
+library(dplyr)
+library(ggplot2)
+library(scales)
+library(stringr)
+
+mako_colors <- c("#0D0887", "#6A00A8", "#B12A90", "#E16462", "#FCA636", "#F0F921")
+# Aggregate by borough
+borough_summary <- df %>%
+  group_by(borough) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count)) %>%
+  mutate(borough = str_to_title(borough))  # title case
+
+# Plot
+ggplot(borough_summary,
+       aes(x = count, y = reorder(borough, count), fill = borough)) +
+  geom_col(width = 0.6, show.legend = FALSE) +
+  geom_text(aes(label = comma(count)),
+            hjust = -0.05, size = 4, family = "sans") +  # data labels
+  scale_fill_manual(values = mako_colors) +
+  scale_x_continuous(labels = comma, expand = expansion(mult = c(0, 0.15))) +  # fix scientific notation
+  labs(
+    title = "311 Complaints by Borough (Jan–Apr 2024)",
+    x = "Number of Complaints",
+    y = "Borough"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold", size = 14),
+    axis.title.x = element_text(margin = margin(t = 10)),
+    axis.title.y = element_text(margin = margin(r = 10)),
+    plot.margin = margin(10, 40, 10, 10)  # extra space for labels
+  ) +
+  coord_cartesian(clip = "off")  # allow data labels to extend past plot area
+
+
+```
+
+# Average Resolution by Borough
+
+```{r fig.height=6, fig.width=8}
+#| code-fold: true
+#| code-summary: "show average resolution"
+#| message: false
+#| warning: false
+
+
+library(dplyr)
+library(ggplot2)
+library(lubridate)
+library(scales)
+library(stringr)
+
+mako_colors <- c("#0D0887", "#6A00A8", "#B12A90", "#E16462", "#FCA636", "#F0F921")
+# Ensure date columns are in POSIXct format
+df <- df %>%
+  mutate(
+    created_date = ymd_hms(created_date, tz = "America/New_York"),
+    closed_date = ymd_hms(closed_date, tz = "America/New_York")
+  )
+
+# Create a new column: time to resolve in days
+df <- df %>%
+  mutate(
+    resolution_time_days = as.numeric(difftime(closed_date, created_date, units = "days"))
+  )
+
+# Remove NA or unspecified boroughs
+df_clean <- df %>%
+  filter(!is.na(borough) & borough != "Unspecified" & !is.na(resolution_time_days))
+
+# Compute average resolution time by borough
+borough_resolution <- df_clean %>%
+  group_by(borough) %>%
+  summarise(avg_resolution_days = mean(resolution_time_days, na.rm = TRUE)) %>%
+  mutate(borough = str_to_title(borough))
+
+# Scatter plot
+ggplot(borough_resolution, aes(x = reorder(borough, avg_resolution_days), y = avg_resolution_days)) +
+  geom_point(size = 4, color = "#E74C3C") +
+  geom_text(aes(label = round(avg_resolution_days, 1)),
+            vjust = -0.8, size = 4) +
+  scale_fill_manual(values = mako_colors) +
+  labs(
+    title = "Average Resolution Time by Borough (Days)",
+    x = "Borough",
+    y = "Average Resolution Time (Days)"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold", size = 14, hjust = 0.5),  # centered title
+    axis.title.x = element_text(margin = margin(t = 10)),
+    axis.title.y = element_text(margin = margin(r = 10))
+  )
+
 ```
 
 ## 4.2 Geographic Distribution
