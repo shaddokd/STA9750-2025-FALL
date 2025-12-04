@@ -616,41 +616,107 @@ ggplot(placeholder_neighborhoods, aes(x = median_income, y = avg_response_time, 
 cat("PLACEHOLDER: Correlation analysis results will go here\n")
 ```
 
-## 5.2 Hyacinthe's Analysis: Income vs Response Time Relationship
+## 5.2 Sarr's Analysis: Income vs Response Time Relationship
 
 **Research Question:** Is there a relationship between income levels and average 311 response times?
 
-```{r sarr-analysis}
-# Hyacinthe's analysis code here - PLACEHOLDER
-cat("=== HYACINTHE'S ANALYSIS SECTION ===\n")
-cat("Research Question: Income vs response time relationship?\n\n")
+Understanding whether wealthier neighborhoods experience faster service delivery is central to our broader equity question. If response times systematically vary with income, this could reveal structural differences in how municipal resources are allocated.
 
-# Create placeholder income quintile data
-placeholder_quintiles <- tibble(
-  income_category = c("Lowest Income", "Low Income", "Middle Income", "High Income", "Highest Income"),
-  income_quintile = 1:5,
-  request_count = sample(800:1200, 5),
-  avg_response_time = c(18.2, 15.1, 12.8, 9.4, 7.2),
-  median_response_time = c(14.0, 12.0, 10.0, 8.0, 6.0),
-  avg_income = c(35000, 55000, 75000, 95000, 135000)
-)
+### Data Preparation
 
-kable(placeholder_quintiles, caption = "PLACEHOLDER: Response Times by Income Quintile")
+```{r sarr-data, echo=TRUE, message=FALSE, warning=FALSE}
 
-# Placeholder visualization
-ggplot(placeholder_quintiles, aes(x = factor(income_quintile), y = avg_response_time, fill = income_category)) +
-  geom_col() +
+# Sarr's individual cleaned dataset (Jan–Apr 2024)
+
+library(dplyr)
+library(lubridate)
+library(ggplot2)
+
+# Load the combined 4-month dataset
+nyc_311 <- read.csv("nyc311_2024_jan_apr_residential_raw.csv")
+
+# Clean timestamps and compute response times
+nyc_311 <- nyc_311 %>%
+  mutate(
+    created_date   = ymd_hms(created_date, tz = "America/New_York", quiet = TRUE),
+    closed_date    = ymd_hms(closed_date,  tz = "America/New_York", quiet = TRUE),
+    response_hours = as.numeric(difftime(closed_date, created_date, units = "hours")),
+    zip_code       = as.character(incident_zip)
+  ) %>%
+  filter(
+    !is.na(response_hours),
+    response_hours >= 0,
+    response_hours <= 30 * 24,
+    borough %in% c("BRONX","BROOKLYN","MANHATTAN","QUEENS","STATEN ISLAND")
+  )
+
+# Aggregate to ZIP level
+nyc_zip <- nyc_311 %>%
+  group_by(zip_code) %>%
+  summarise(
+    avg_response    = mean(response_hours, na.rm = TRUE),
+    median_response = median(response_hours, na.rm = TRUE),
+    n_complaints    = n(),
+    .groups = "drop"
+  )
+
+# Load ACS income data
+nyc_income <- read.csv("nyc_income.csv") %>%
+  mutate(zip_code = as.character(zip_code))
+
+# Join datasets
+nyc_joined <- nyc_zip %>%
+  left_join(nyc_income, by = "zip_code")
+
+glimpse(nyc_joined)
+
+```
+
+Before visualizing the relationship between income and response times, complaint-level data were aggregated to the ZIP Code level and merged with Census median household income. This produces a dataset that allows us to examine whether higher-income neighborhoods tend to receive faster service.
+
+```{r sarr-analysis,echo=TRUE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5}
+
+ggplot(nyc_joined, aes(x = median_income, y = avg_response)) +
+  geom_point(alpha = 0.6, color = "#0072B2") +
+  geom_smooth(method = "lm", se = TRUE, color = "red", linewidth = 1.1) +
   labs(
-    title = "PLACEHOLDER: Response Time by Income Quintile",
-    subtitle = "Your team will calculate actual statistics",
-    x = "Income Quintile (1 = Lowest, 5 = Highest)",
-    y = "Average Response Time (Days)",
-    fill = "Income Category"
+    title = "Relationship Between Median Household Income and 311 Response Times",
+    subtitle = "ZIP-level comparison across NYC (Jan–Apr 2024)",
+    x = "Median Household Income (USD)",
+    y = "Average 311 Response Time (Days)"
   ) +
+  scale_x_continuous(labels = scales::dollar_format()) +
   theme_minimal()
 
-cat("PLACEHOLDER: ANOVA results and statistical significance testing will go here\n")
+
 ```
+
+## Interpretation
+
+The scatterplot shows a wide vertical spread of 311 response times across neighborhoods with vastly different income levels. Both **low-income** and **high-income** ZIP Codes experience short and long response times, indicating that income alone does not explain much of the variation.
+
+Several patterns reinforce this:
+
+- **Lower-income ZIP Codes (< \$60,000):** display substantial variability — average response times range from under 40 hours to well above 100 hours.
+- **Higher-income ZIP Codes (> \$150,000):** also show variability, though they tend to cluster slightly lower overall.
+- **Regression pattern:** the fitted regression line slopes only mildly downward, suggesting that higher income corresponds to marginally shorter response times, but the effect is extremely small.
+- **Vertical dispersion:** the vertical spread of points is much larger than any horizontal trend, indicating that operational or geographic factors likely dominate variation in response times.
+
+Overall, this exploratory analysis finds **no strong evidence of income-based inequality** in 311 response times during the January–April 2024 study window. While wealthier ZIP Codes may experience slightly quicker responses on average, the effect is small and overshadowed by wider variation across the city.
+
+
+## Conclusion
+
+Taken together, these results indicate that **income alone is not a major driver** of 311 response-time differences. The weak correlation, minimal regression effect, and large within-income variability all point to the same conclusion:
+
+Other operational, geographic, or complaint specific factors likely play a much larger role.
+
+To better understand what shapes response-time differences, following sections will examine:
+
+- **Complaint type differences**
+- **Complaint volume effects**
+- **Geographic variation across neighborhoods**
+
 
 ## 5.3 Juan's Analysis: Complaint Type Resolution by Wealth
 
