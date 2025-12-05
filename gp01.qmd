@@ -615,31 +615,180 @@ p1 / p2
 cat("=== REEM'S ANALYSIS SECTION ===\n")
 cat("Research Question: What is the average response time by neighborhood?\n\n")
 
-# Create placeholder data for demonstration
-placeholder_neighborhoods <- tibble(
-  neighborhood = paste("Neighborhood", 1:10),
-  borough = sample(c("Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island"), 10, replace = TRUE),
-  avg_response_time = round(runif(10, 3, 20), 1),
-  request_count = sample(50:200, 10),
-  median_income = sample(40000:120000, 10)
-)
+```{r}
+df_311_clean <- df_311_clean %>%
+  mutate(
+    incident_zip = str_extract(incident_zip, "\\d{5}")
+  ) %>%
+  filter(!is.na(incident_zip))
+```
 
-kable(placeholder_neighborhoods, caption = "PLACEHOLDER: Top 10 Neighborhoods Analysis")
+```{r}
+response_by_zip <- df_311_clean %>%
+  group_by(incident_zip, borough) %>%
+  summarize(
+    n_complaints = n(),
+    mean_response_days = mean(response_time_days, na.rm = TRUE),
+    sd_response_days = sd(response_time_days, na.rm = TRUE),
+    p25_days = quantile(response_time_days, 0.25, na.rm = TRUE),
+    p75_days = quantile(response_time_days, 0.75, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(mean_response_days))
+```
 
-# Placeholder visualization
-ggplot(placeholder_neighborhoods, aes(x = median_income, y = avg_response_time, color = borough)) +
-  geom_point(aes(size = request_count), alpha = 0.7) +
-  geom_smooth(method = "lm", se = FALSE, color = "red") +
+```{r}
+datatable(
+  response_by_zip %>%
+    slice_max(mean_response_days, n = 10) %>%
+    select(incident_zip, borough, n_complaints, mean_response_days),
+  caption = "Top 10 Slowest ZIP Codes (Mean Response Time)",
+  colnames = c("ZIP", "Borough", "# Complaints", "Mean Days"),
+  options = list(pageLength = 10, dom = 't'),
+  rownames = FALSE
+) %>%
+  formatRound("mean_response_days", 2) %>%
+  formatCurrency("n_complaints", "", 0, ",")
+```
+# SQ1: Average 311 Response Time by ZIP Code 
+
+nyc_311_clean <- df_311_clean
+
+# Build response metrics by ZIP code
+response_by_zip <- nyc_311_clean %>%
+  filter(!is.na(incident_zip)) %>%
+  mutate(
+    # Convert response time to hours for "fastest" table
+    response_time_hours = response_time_days * 24
+  ) %>%
+  group_by(incident_zip, borough) %>%
+  summarize(
+    n_complaints        = n(),
+    mean_response_hours = mean(response_time_hours, na.rm = TRUE),
+    sd_response_hours   = sd(response_time_hours, na.rm = TRUE),
+    p25_hours           = quantile(response_time_hours, 0.25, na.rm = TRUE),
+    p75_hours           = quantile(response_time_hours, 0.75, na.rm = TRUE),
+    mean_response_days  = mean(response_time_days, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(mean_response_days))
+```
+
+```{r}
+datatable(
+  response_by_zip %>%
+    slice_max(mean_response_days, n = 10) %>%
+    select(incident_zip, borough, n_complaints, mean_response_days),
+  caption = "Top 10 Slowest ZIP Codes (by Mean Response Time)",
+  colnames = c("ZIP", "Borough", "# Complaints", "Mean Days"),
+  options = list(pageLength = 10, dom = 't'),
+  rownames = FALSE
+) %>%
+  formatRound("mean_response_days", 2) %>%
+  formatCurrency("n_complaints", "", 0, ",")
+```
+
+```{r}
+datatable(
+  response_by_zip %>%
+    slice_min(mean_response_days, n = 10) %>%
+    mutate(mean_response_hours = round(mean_response_hours, 2)) %>%
+    select(incident_zip, borough, n_complaints, mean_response_hours),
+  caption = "10 Fastest ZIP Codes (Mean Response Time in Hours)",
+  colnames = c("ZIP", "Borough", "# Complaints", "Mean Hours"),
+  options = list(pageLength = 10, dom = 't'),
+  rownames = FALSE
+) %>%
+  formatRound("mean_response_hours", 2) %>%
+  formatCurrency("n_complaints", "", 0, ",")
+```
+
+```{r}
+response_by_borough <- response_by_zip %>%
+  group_by(borough) %>%
+  summarize(
+    n_zips            = n(),
+    total_complaints  = sum(n_complaints),
+    avg_mean_days     = mean(mean_response_days, na.rm = TRUE),
+    min_days          = min(mean_response_days, na.rm = TRUE),
+    max_days          = max(mean_response_days, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(avg_mean_days))
+```
+
+```{r}
+datatable(
+  response_by_borough,
+  caption = "Response Time Summary by Borough",
+  colnames = c("Borough", "# ZIP Codes", "Total Complaints", "Avg Mean Days", "Min Days", "Max Days"),
+  options = list(pageLength = 10),
+  rownames = FALSE
+) %>%
+  formatRound(c("avg_mean_days", "min_days", "max_days"), 2) %>%
+  formatCurrency(c("n_zips", "total_complaints"), "", 0, ",")
+```
+
+
+# Visualization
+```{r}
+response_by_zip %>%
+  filter(n_complaints >= 30) %>%
+  ggplot(aes(
+    x = reorder(incident_zip, mean_response_days),
+    y = mean_response_days,
+    fill = borough
+  )) +
+  geom_col() +
+  coord_flip() +
   labs(
-    title = "PLACEHOLDER: Response Time vs. Neighborhood Income",
-    subtitle = "Your team will create the actual analysis",
-    x = "Median Income ($)",
-    y = "Average Response Time (Days)",
-    color = "Borough",
-    size = "Request Count"
+    title = "Average 311 Response Time by ZIP Code",
+    subtitle = "ZIP codes with 30+ complaints (Jan–Apr 2024)",
+    x = "ZIP Code",
+    y = "Average Response Time (days)"
   ) +
-  scale_x_continuous(labels = scales::dollar_format()) +
-  theme_minimal()
+  scale_fill_brewer(palette = "Set2") +
+  theme(axis.text.y = element_text(size = 7))
+```
+
+```{r}
+ggplot(response_by_borough,
+       aes(x = reorder(borough, avg_mean_days),
+           y = avg_mean_days,
+           fill = borough)) +
+  geom_col() +
+  coord_flip() +
+  labs(
+    title = "Average Response Time by Borough",
+    x = "Borough",
+    y = "Average Response Time (days)"
+  ) +
+  scale_fill_brewer(palette = "Set2") +
+  theme(legend.position = "none")
+```
+
+```{r}
+response_by_zip %>%
+  filter(n_complaints >= 30) %>%
+  ggplot(aes(
+    x = borough,
+    y = incident_zip,
+    fill = mean_response_days)) +
+  geom_tile() +
+  scale_fill_gradient2(
+    low = "green",
+    mid = "yellow",
+    high = "red",
+    midpoint = mean(response_by_zip$mean_response_days, na.rm = TRUE)
+  ) +
+  labs(
+    title = "Average 311 Response Time by ZIP Code and Borough",
+    x = "Borough",
+    y = "ZIP Code",
+    fill = "Mean Days"
+  ) +
+  theme(axis.text.y = element_text(size = 6))
+```
 
 cat("PLACEHOLDER: Correlation analysis results will go here\n")
 ```
