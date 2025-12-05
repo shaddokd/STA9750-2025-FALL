@@ -1323,7 +1323,7 @@ cat("   between their wealthiest and least wealthy neighborhoods.\n")
 
 ### Interpretation
 
-The analysis of borough and neighborhood disparities reveals several important patterns:
+Looking at the differences across boroughs and neighborhoods, a few key patterns stand out:
 
 **Borough-Level Findings:**
 The heatmap and disparity calculations show that response time differences between wealthy and less wealthy neighborhoods are not uniform across NYC. Some boroughs exhibit more pronounced disparities than others, suggesting that the relationship between neighborhood wealth and service delivery may be influenced by borough-specific factors such as complaint volume, resource allocation, or geographic challenges.
