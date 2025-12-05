@@ -134,6 +134,7 @@ cat("Key Variables: Property values, assessment data, geographic identifiers\n")
 #| message: false
 #| warning: false
 
+<<<<<<< HEAD
 library(httr2)
 library(jsonlite)
 library(dplyr)
@@ -180,6 +181,39 @@ if (file.exists(data_file)) {
   saveRDS(df, data_file)
 }
 
+=======
+
+.libPaths("/Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library/RSocrata")
+library(RSocrata)
+library(dplyr)
+library(DT)
+
+suppressPackageStartupMessages({
+  library(RSocrata)
+  library(dplyr)
+})
+
+# Define the file path where you'll save the data
+data_file <- "nyc_311_data_2024_jan_apr.rds"
+
+# Check if the file already exists
+if (file.exists(data_file)) {
+  # If it exists, just read it
+  df <- readRDS(data_file)
+} else {
+  # If it doesn't exist, download it
+
+  # The API endpoint with first 4 months of 2024 filter
+  url <- "https://data.cityofnewyork.us/resource/erm2-nwe9.json?$where=created_date>='2024-01-01T00:00:00' AND created_date<'2024-05-01T00:00:00'"
+
+  # Download the data
+  df <- read.socrata(url)
+
+  # Save to file
+  saveRDS(df, data_file)
+
+}
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
 # Display first 1000 rows only
 datatable(head(df, 1000),
           options = list(
@@ -402,7 +436,10 @@ ggplot(complaint_summary %>% slice_max(count, n = 15),
     plot.margin = margin(10, 40, 10, 10)  # extra space on right for labels
   )
 ```
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
 # Complaints by Borough
 ```{r}
 #| code-fold: true
@@ -458,13 +495,18 @@ ggplot(borough_summary,
 #| warning: false
 
 
+<<<<<<< HEAD
 # Aggregate by location_type
+=======
+# Aggregate by borough
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
 library(dplyr)
 library(ggplot2)
 library(scales)
 library(stringr)
 
 mako_colors <- c("#0D0887", "#6A00A8", "#B12A90", "#E16462", "#FCA636", "#F0F921")
+<<<<<<< HEAD
 
 # Aggregate by location_type
 location_summary <- df %>%
@@ -486,15 +528,42 @@ ggplot(location_summary,
     title = "Top 10 Location Types (Jan–Apr 2024)",
     x = "Number of Complaints",
     y = "Location Type"
+=======
+# Aggregate by borough
+borough_summary <- df %>%
+  group_by(borough) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count)) %>%
+  mutate(borough = str_to_title(borough))  # title case
+
+# Plot
+ggplot(borough_summary,
+       aes(x = count, y = reorder(borough, count), fill = borough)) +
+  geom_col(width = 0.6, show.legend = FALSE) +
+  geom_text(aes(label = comma(count)),
+            hjust = -0.05, size = 4, family = "sans") +  # data labels
+  scale_fill_manual(values = mako_colors) +
+  scale_x_continuous(labels = comma, expand = expansion(mult = c(0, 0.15))) +  # fix scientific notation
+  labs(
+    title = "311 Complaints by Borough (Jan–Apr 2024)",
+    x = "Number of Complaints",
+    y = "Borough"
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
   ) +
   theme_minimal(base_size = 12) +
   theme(
     plot.title = element_text(face = "bold", size = 14),
     axis.title.x = element_text(margin = margin(t = 10)),
     axis.title.y = element_text(margin = margin(r = 10)),
+<<<<<<< HEAD
     plot.margin = margin(10, 40, 10, 10)
   ) +
   coord_cartesian(clip = "off")
+=======
+    plot.margin = margin(10, 40, 10, 10)  # extra space for labels
+  ) +
+  coord_cartesian(clip = "off")  # allow data labels to extend past plot area
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
 
 
 ```
@@ -515,12 +584,20 @@ library(scales)
 library(stringr)
 
 mako_colors <- c("#0D0887", "#6A00A8", "#B12A90", "#E16462", "#FCA636", "#F0F921")
+<<<<<<< HEAD
 
 # Ensure date columns are in POSIXct format
 df <- df %>%
   mutate(
     created_date = ymd_hms(created_date, tz = "America/New_York", quiet = TRUE),
     closed_date = ymd_hms(closed_date, tz = "America/New_York", quiet = TRUE)
+=======
+# Ensure date columns are in POSIXct format
+df <- df %>%
+  mutate(
+    created_date = ymd_hms(created_date, tz = "America/New_York"),
+    closed_date = ymd_hms(closed_date, tz = "America/New_York")
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
   )
 
 # Create a new column: time to resolve in days
@@ -660,8 +737,16 @@ library(dplyr)
 library(lubridate)
 library(ggplot2)
 
+<<<<<<< HEAD
 # Use the already-loaded 311 data (df) instead of loading from CSV
 nyc_311 <- df %>%
+=======
+# Load the combined 4-month dataset
+nyc_311 <- read.csv("nyc311_2024_jan_apr_residential_raw.csv")
+
+# Clean timestamps and compute response times
+nyc_311 <- nyc_311 %>%
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
   mutate(
     created_date   = ymd_hms(created_date, tz = "America/New_York", quiet = TRUE),
     closed_date    = ymd_hms(closed_date,  tz = "America/New_York", quiet = TRUE),
@@ -685,6 +770,7 @@ nyc_zip <- nyc_311 %>%
     .groups = "drop"
   )
 
+<<<<<<< HEAD
 # Load or create ACS income data
 # If nyc_income.csv doesn't exist, create sample data based on NYC ZIP codes
 if (file.exists("nyc_income.csv")) {
@@ -728,6 +814,15 @@ if (file.exists("nyc_income.csv")) {
 nyc_joined <- nyc_zip %>%
   left_join(nyc_income, by = "zip_code") %>%
   filter(!is.na(median_income))
+=======
+# Load ACS income data
+nyc_income <- read.csv("nyc_income.csv") %>%
+  mutate(zip_code = as.character(zip_code))
+
+# Join datasets
+nyc_joined <- nyc_zip %>%
+  left_join(nyc_income, by = "zip_code")
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
 
 glimpse(nyc_joined)
 
@@ -1341,13 +1436,21 @@ These findings suggest that targeted interventions may be warranted in boroughs 
 ## 5.5 Shahria's Analysis: Predictive Modeling
 
 **Research Question:** Can we predict where a complaint came from (neighborhood) based on the complaint characteristics?
+### Classification Modeling
 
+<<<<<<< HEAD
 ### Classification Modeling
 
 To make this project interesting and have real world applications, we decided to add in predictive analytics through machine learning. It started out with a simple question: Can we predict where a complaint came from (neighborhood) based on the complaint?  This can help us determine how long it will take for the complaint to be resolved since we know the average turnaround time for a borough. But this quickly proved difficult and we ran into problems, causing us to pivot three times. 
 
 To predict neighborhood from complaint data, we'll need to build a classification model. Randomforest is the one I'm most familiar with and have used in Python, so I thought it would be fairly straightforward to translate it over into R. For the first test, we pulled data from the 311 complaints dataset, narrowing the timeframe to the first four months of 2024. Just four months ended up having over one million rows. For the initial model, the borough was the target variable and the following columns were the features:
 
+=======
+To make this project interesting and have real world applications, we decided to add in predictive analytics through machine learning. It started out with a simple question: Can we predict where a complaint came from (neighborhood) based on the complaint?  This can help us determine how long it will take for the complaint to be resolved since we know the average turnaround time for a borough. But this quickly proved difficult and we ran into problems, causing us to pivot three times. 
+
+To predict neighborhood from complaint data, we'll need to build a classification model. Randomforest is the one I’m most familiar with and have used in Python, so I thought it would be fairly straightforward to translate it over into R. For the first test, we pulled data from the 311 complaints dataset, narrowing the timeframe to the first four months of 2024. Just four months ended up having over one million rows. For the initial model, the borough was the target variable and the following columns were the features:
+
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
 - **complaint_type**
 - **descriptor**
 - **agency**
@@ -1358,12 +1461,20 @@ To predict neighborhood from complaint data, we'll need to build a classificatio
 - **month**
 - **is_weekend**
 
+<<<<<<< HEAD
 How do we measure accuracy? Usually with regression models, you use R-squared which tells you how close the model was to the actual numbers. For classification models, we rely on accuracy or how often we are right (% of correct predictions). There are other metrics to evaluate them but for simplicity's sake, I went with accuracy. The formula is below:
 
 **Accuracy = (True Positives + True Negatives) / (Total Predictions)**
 
 Using a randomforest classifier model and splitting the dataset into a training and testing set, I ran the model. This however was very disappointing, with a model accuracy of **38.46%**. There were some things we can do to improve the accuracy such as applying a k fold cross validation and grid search to find the optimal parameters for the model. However, this didn't improve the outcome greatly. Ultimately, I wasn't confident in saying that we can predict where the complaint came from with a **38%** accuracy. 
 
+=======
+How do we measure accuracy? Usually with regression models, you use R-squared which tells you how close the model was to the actual numbers. For classification models, we rely on accuracy or how often we are right (% of correct predictions). There are other metrics to evaluate them but for simplicity’s sake, I went with accuracy. The formula is below:
+
+**Accuracy = (True Positives + True Negatives) / (Total Predictions)**
+
+Using a randomforest classifier model and splitting the dataset into a training and testing set, I ran the model. This however was very disappointing, with a model accuracy of **38.46%**. There were some things we can do to improve the accuracy such as applying a k fold cross validation and grid search to find the optimal parameters for the model. However, this didn’t improve the outcome greatly. Ultimately, I wasn’t confident in saying that we can predict where the complaint came from with a **38%** accuracy. 
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
 ```{r}
 #| code-fold: true
 #| code-summary: "Prepare data for prediction model"
@@ -1496,10 +1607,24 @@ What if we expand the timeframe? We can take _100,000 rows_ from each month and 
 #| warning: false
 #| eval: false
 
+<<<<<<< HEAD
 library(httr2)
 library(jsonlite)
 library(dplyr)
 
+=======
+#r socrata gives issues, so have to map out the path where it is downloaded so R can find it 
+.libPaths("/Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library/RSocrata")
+library(RSocrata)
+library(dplyr)
+
+# i get alot of messages showing download progress. dont need it, so suppress it for now
+suppressPackageStartupMessages({
+  library(RSocrata)
+  library(dplyr)
+})
+
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
 # this is the name of the file that will be saved
 data_file <- "nyc_311_data_2024_stratified.rds"
 #check if the file already exists
@@ -1508,11 +1633,17 @@ if (file.exists(data_file)) {
 } else {
   # create empty list to store monthly dataframes and concat at the end
   monthly_data_list <- list()
+<<<<<<< HEAD
   base_url <- "https://data.cityofnewyork.us/resource/erm2-nwe9.json"
   
   # for loop through each month of 2024
   for(month in 1:12) {
     # create date strings for the month
+=======
+  # for loop through each month of 2024
+  for(month in 1:12) {
+    #  reate date strings for the month
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
     start_date <- sprintf("2024-%02d-01T00:00:00", month)
     # calculate end date
     if(month == 12) {
@@ -1520,6 +1651,7 @@ if (file.exists(data_file)) {
     } else {
       end_date <- sprintf("2024-%02d-01T00:00:00", month + 1)
     }
+<<<<<<< HEAD
     
     # Build where clause
     where_clause <- paste0("created_date>='", start_date, "' AND created_date<'", end_date, "'")
@@ -1538,6 +1670,20 @@ if (file.exists(data_file)) {
     cat("Downloaded month", month, ":", nrow(month_data), "rows\n")
   }
   #concat all lists into a dataframe 
+=======
+    # download data for each month using the start and end date, which store each months date in them.     # set limit to 100000 rows. this takes the first 100000 rows, its not fully random
+    url <- paste0(
+      "https://data.cityofnewyork.us/resource/erm2-nwe9.json?",
+      "$where=created_date>='", start_date, "' AND created_date<'", end_date, "'",
+      "&$limit=100000"  
+    )
+    #call socrata package
+    month_data <- read.socrata(url)
+    #store in list
+    monthly_data_list[[month]] <- month_data
+  }
+  #concact all lists into a dataframe 
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
   df_2024 <- bind_rows(monthly_data_list)
   #save to file
   saveRDS(df_2024, data_file)
@@ -1667,18 +1813,36 @@ I ended up pivoting a third time and using the 311 resolution satisfaction datas
 Running the Randomforest model through this yielded a model accuracy of **45.26%**.  Even with cross validation and gridsearch, we could not get a higher accuracy value. So for this project, we decided to keep it as is. 45% of the time, our model will accurately tell you which borough a complaint came from.
 
 # Exploratory Data Analysis
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
 ```{r}
 #| code-fold: true
 #| code-summary: "Download 311 Satisfaction Survey Data"
 #| message: false
 #| warning: false
 
+<<<<<<< HEAD
 library(httr2)
 library(jsonlite)
 library(dplyr)
 library(DT)
 
+=======
+#r socrata gives issues, so have to map out the path where it is downloaded so R can find it 
+.libPaths("/Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library/RSocrata")
+library(RSocrata)
+library(dplyr)
+library(DT)
+
+#suppress download messages
+suppressPackageStartupMessages({
+  library(RSocrata)
+  library(dplyr)
+})
+
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
 # this is the file name of downloaded 
 data_file <- "nyc_311_satisfaction_survey.rds"
 
@@ -1687,6 +1851,7 @@ if (file.exists(data_file)) {
   #if it does, just read it. no need to redownload
   df_satisfaction <- readRDS(data_file)
 } else {
+<<<<<<< HEAD
   #if it doesn't exist, download it using httr2
   # API URL endpoint for satisfaction survey data
   base_url <- "https://data.cityofnewyork.us/resource/5ijn-vbdv.json"
@@ -1699,6 +1864,13 @@ if (file.exists(data_file)) {
   # Parse JSON response
   df_satisfaction <- resp |> resp_body_json(simplifyVector = TRUE) |> as_tibble()
   
+=======
+  #if it doesn't exist, download it
+  # API URL endpoint for satisfaction survey data
+  url <- "https://data.cityofnewyork.us/resource/5ijn-vbdv.json"
+  #download the data
+  df_satisfaction <- read.socrata(url)
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
   # save to file
   saveRDS(df_satisfaction, data_file)
 }
@@ -1716,7 +1888,10 @@ datatable(head(df_satisfaction, 1000),
 ```
 
 Before we run the model, we convert the categorical satisfaction metrics to numerical. Let's look at the total count of each satisfaction option.
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
 ```{r}
 #| code-fold: true
 #| code-summary: "Data wrangling"
@@ -1749,7 +1924,10 @@ datatable(satisfaction_table,
 ```
 
 Once we remove missing values and clean up the data, we have a final dataframe that we can pass into the randomforest model
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
 ```{r}
 #| code-fold: true
 #| code-summary: "Data wrangling"
@@ -1823,7 +2001,10 @@ colnames(borough_table) <- c("Borough", "Count")
 ```
 
 Let's take a look at complaint distribution by borough. Brooklyn has the most complaints out of any borough! Nearly double the complaints of Manhattan!
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
 ```{r}
 #| code-fold: true
 #| code-summary: "Borough distribution"
@@ -1873,7 +2054,10 @@ confusion_matrix <- confusionMatrix(predictions, test_data$borough)
 ```
 
 At last, we ran the model! How accurate is it? Not the best, but still better than our initial model 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
 ```{r}
 #| code-fold: true
 #| code-summary: "Model accuracy"
@@ -1901,7 +2085,10 @@ Let's take a look at the confusion matrix below. It's a big confusing, but the s
 
 **Cell (Brooklyn, Manhattan) = 2,565** means the model predicted Brooklyn 2,565 times when it was actually Manhattan \
 **Cell (Queens, Queens) = 3,961** means the model correctly predicted Queens 3,961 times 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
 ```{r}
 #| code-fold: true
 #| code-summary: "Model evaluation"
@@ -1924,7 +2111,10 @@ datatable(confusion_df,
 
 
 Which features were most important in helping the model predict which borough the complaint is from? Description followed by complaint type. It appears that certain boroughs have specific complaints. For this graph, we use a metric called MeanDecreaseGini which assesses how much a feature reduces uncertainty when making predictions.
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
 ```{r}
 #| code-fold: true
 #| code-summary: "Visualize feature importance"
@@ -1995,7 +2185,10 @@ ggplot(top_complaints_by_borough,
 As a last test of the Randomforest model, we'll take a random complaint and fill in all the necessary metrics. We already know which borough this complaint is from. Our goal here is to see if the model is able to correctly predict the borough.
 
 We have a section in the code chunk below where we can enter values for each complaint metric. The output below is a sample complaint:
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
 ```{r}
 #| code-fold: true
 #| code-summary: "Borough Prediction"
@@ -2110,13 +2303,19 @@ datatable(specific_complaint,
 
 
 This is a real complaint from Brooklyn. We know that average turnaround time is roughly **12 days** for a complaint from this borough. Where does our model predict the complaint came from? There's roughly a 45% that we will be accurate here. 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
 ```{r}
 cat("Predicted Borough:", example_prediction$predicted_borough, "\n\n")
 ```
 
 Below is the model's probability of outputting a borough based on the complaint. 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7e30ca75986751df95ca9eb91d11624c40b1543f
 ```{r}
 datatable(example_prediction$probabilities, 
           options = list(pageLength = 10, dom = 't'),
