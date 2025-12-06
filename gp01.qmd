@@ -286,6 +286,22 @@ cat("Cleaned 311 Data:\n")
 cat("Rows after cleaning:", nrow(df_311_clean), "\n")
 cat("Response time range:", round(range(df_311_clean$response_time_days, na.rm = TRUE), 2), "days\n")
 ```
+# addition
+```{r}
+df_311_clean <- df_311_clean |>
+  mutate(
+    latitude = as.numeric(latitude),
+    longitude = as.numeric(longitude)
+  )
+```
+
+```{r}
+df_property <- df_property |>
+  mutate(
+    latitude = as.numeric(latitude),
+    longitude = as.numeric(longitude)
+  )
+```
 
 ### 3.5 Integrate Geographic Data
 ```{r geographic-integration}
