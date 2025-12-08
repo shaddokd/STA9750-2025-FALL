@@ -1046,6 +1046,33 @@ ggplot(gap_data,
 
 cat("PLACEHOLDER: Statistical comparison tests will go here\n")
 ```
+## Interpretation
+1. Bar Chart:Average Response Times by complaint Type and Neighborhood Wealth
+This chart shows a comparison of the average resolution times for each complaint category between wealthier and less wealthy neighborhoods.
+
+- Across **all complaint types** (Noise, Parking, Sanitation, and Other), **less wealthy neighborhoods consistently experience longer average response times**.
+- The differences are especially large for **Sanitation** and **Other** complaints, where less wealthy areas have substantially slower resolution.
+- This pattern suggests a systematic disparity, not random variation: wealthier neighborhoods receive quicker service regardless of complaint type.
+
+2. Boxplot: Distribution of Resolution Times by Wealth Category
+This Boxplot shows a deeper look into the entire distribution of response times, not just averages.
+
+- For every complaint category, the **median** response time is higher in less wealthy neighborhoods.
+- The distributions for less wealthy areas also show **greater variability** and more **extreme delays** (outliers).
+- This indicates that slower response times in lower-income neighborhoods are not caused by a few unusual cases — the pattern is visible across most of the data.
+
+3. Gap Line Chart: Resolution Time Gap (Less Wealthy – Wealthy)
+This Chart shows a direct measure of inequality: 
+gap = (average time in less wealthy neighborhoods) – (average time in wealthy neighborhoods)
+- All gaps are **positive**, meaning less wealthy neighborhoods always have slower resolution.
+- The largest gaps appear in **Other** and **Sanitation** complaints, suggesting that economic disparities affect certain complaint types more strongly.
+- Since no gap falls below zero, there are **no complaint categories where less wealthy neighborhoods receive faster service.**
+
+## Conclusion
+
+The analysis provides clear and consistent evidence that quality-of-life complaints are resolved more quickly in wealthier neighborhoods. This pattern holds across all complaint categories included in the study. While the size of the disparity varies **most notably in Sanitation and Other complaints** the direction of the difference is uniform: municipal services consistently respond faster in **higher income areas**.
+These findings highlight a systemic inequality in complaint resolution times, indicating that neighborhood wealth plays a meaningful role in determining how quickly residents receive municipal attention. Such disparities raise important questions about equity and resource allocation across communities.
+
 
 ## 5.4 Kyle's Analysis: Borough and Neighborhood Disparities
 
