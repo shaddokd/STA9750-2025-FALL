@@ -1,6 +1,7 @@
 project:
   type: website
   output-dir: docs
+
 website:
   title: "STA 9750 Submission Material"
   description: "Course Projects for STA 9750 at Baruch College"
@@ -19,12 +20,22 @@ website:
         text: Mini Project Three
       - href: mp04.qmd
         text: Mini Project Four
-      - href: gp01.qmd
-        text: Final Project
+      - text: Final Project
+        menu:
+          - href: gp01.qmd
+            text: Project Overview
+          - href: GS01.qmd
+            text: Summary Report
+          - href: gp01-individual.qmd
+            text: Individual Report
+
 format:
   html:
     theme: lux
     toc: true
     toc-location: left
+    code-fold: true
+    code-summary: "Show code"
+
 editor:
   mode: source
