@@ -945,15 +945,6 @@ The 311 system was supposed to level the playing field. It was supposed to give 
 
 ---
 
-## Appendix: Code Reproducibility
-
-All the code here should work if you run it yourself. To reproduce this analysis:
-
-1. Clone the repository with this `.qmd` file
-2. Set your Census API key: `census_api_key("YOUR_KEY", install = TRUE)`
-3. Render it: `quarto render individual_report.qmd`
-
-Everything pulls from the APIs automatically, so you don't need to download any files manually.
 
 ### Session Information
 
