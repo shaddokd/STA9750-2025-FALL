@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://shaddokd.github.io/STA9750-2025-FALL/gp01.html</loc>
+    <lastmod>2025-12-13T20:11:40.640Z</lastmod>
+  </url>
+  <url>
     <loc>https://shaddokd.github.io/STA9750-2025-FALL/mp04.html</loc>
     <lastmod>2025-11-26T02:30:19.278Z</lastmod>
   </url>
@@ -17,12 +21,8 @@
     <lastmod>2025-09-04T23:31:26.318Z</lastmod>
   </url>
   <url>
-    <loc>https://shaddokd.github.io/STA9750-2025-FALL/gp01.html</loc>
-    <lastmod>2025-12-05T01:12:10.132Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shaddokd.github.io/STA9750-2025-FALL/index.html</loc>
-    <lastmod>2025-08-30T14:34:00.599Z</lastmod>
+    <loc>https://shaddokd.github.io/STA9750-2025-FALL/GS01.html</loc>
+    <lastmod>2025-12-13T19:51:43.736Z</lastmod>
   </url>
   <url>
     <loc>https://shaddokd.github.io/STA9750-2025-FALL/Lab_Two.html</loc>
@@ -35,9 +35,5 @@
   <url>
     <loc>https://shaddokd.github.io/STA9750-2025-FALL/mp03.html</loc>
     <lastmod>2025-10-28T23:44:19.704Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shaddokd.github.io/STA9750-2025-FALL/GS01.html</loc>
-    <lastmod>2025-12-13T19:21:18.813Z</lastmod>
   </url>
 </urlset>

@@ -165,10 +165,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./mp04.html"> 
 <span class="menu-text">Mini Project Four</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./gp01.html"> 
-<span class="menu-text">Final Project</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-final-project" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Final Project</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-final-project">    
+        <li>
+    <a class="dropdown-item" href="./gp01.html">
+ <span class="dropdown-text">Project Overview</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./GS01.html">
+ <span class="dropdown-text">Summary Report</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./GI01.qmd">
+ <span class="dropdown-text">Individual Report</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -260,7 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="cell">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
@@ -274,7 +289,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Which CBSA (by name) permitted the largest number of new housing units in the decade from 2010 to 2019 (inclusive)?</strong></p>
 <div class="cell">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Filter permits data for 2010-2019 and aggregate by CBSA</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>permits_2010_2019 <span class="ot">&lt;-</span> PERMITS <span class="sc">%&gt;%</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">2010</span> <span class="sc">&amp;</span> year <span class="sc">&lt;=</span> <span class="dv">2019</span>) <span class="sc">%&gt;%</span></span>
@@ -319,7 +334,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="application/json" data-for="htmlwidget-0e4f12ccb6229001efb4">{"x":{"filter":"none","vertical":false,"caption":"<caption>Top 10 Metropolitan Areas by Housing Permits Issued (2010-2019)<\/caption>","data":[["Houston-Sugar Land-Baytown, TX Metro Area","Houston-The Woodlands-Sugar Land, TX Metro Area","Houston-Pasadena-The Woodlands, TX Metro Area","Dallas-Fort Worth-Arlington, TX Metro Area","New York-Northern New Jersey-Long Island, NY-NJ-PA Metro Area","New York-Newark-Jersey City, NY-NJ-PA Metro Area","New York-Newark-Jersey City, NY-NJ Metro Area","Atlanta-Sandy Springs-Marietta, GA Metro Area","Atlanta-Sandy Springs-Roswell, GA Metro Area","Atlanta-Sandy Springs-Alpharetta, GA Metro Area"],[26420,26420,26420,19100,35620,35620,35620,12060,12060,12060],[482075,482075,482075,460826,446020,446020,446020,254377,254377,254377],["482,075","482,075","482,075","460,826","446,020","446,020","446,020","254,377","254,377","254,377"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Metropolitan Area<\/th>\n      <th>CBSA Code<\/th>\n      <th>Total Permits<\/th>\n      <th>Formatted Permits<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"dom":"t","ordering":false,"columnDefs":[{"visible":false,"targets":[1,2]},{"className":"dt-right","targets":[1,2]},{"name":"NAME","targets":0},{"name":"CBSA","targets":1},{"name":"total_permits","targets":2},{"name":"total_permits_formatted","targets":3}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[-1]; $(this.api().cell(row, -1).node()).css({'font-size':'14px'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'font-size':'14px'});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the answer</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>top_cbsa <span class="ot">&lt;-</span> top_permits_with_names[<span class="dv">1</span>, ]</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">**ANSWER:** The metropolitan area with the most housing permits from 2010-2019 was **"</span>, </span>
@@ -336,7 +351,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>In what year did Albuquerque, NM (CBSA Number 10740) permit the most new housing units?</strong></p>
 <div class="cell">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter for Albuquerque CBSA and find peak year</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>albuquerque_permits <span class="ot">&lt;-</span> PERMITS <span class="sc">%&gt;%</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(CBSA <span class="sc">==</span> <span class="dv">10740</span>) <span class="sc">%&gt;%</span></span>
@@ -364,7 +379,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="application/json" data-for="htmlwidget-77797210758ce1c4a10b">{"x":{"filter":"none","vertical":false,"caption":"<caption>Housing Permits in Albuquerque, NM (CBSA 10740) by Year<\/caption>","data":[[10740,10740,10740,10740,10740,10740,10740,10740,10740,10740,10740,10740,10740,10740,10740],[4021,2852,2834,2606,2543,2465,2295,2256,2186,2148,2084,2014,1764,1692,1634],[2021,2022,2023,2013,2014,2016,2015,2017,2018,2019,2012,2020,2010,2009,2011],["4,021","2,852","2,834","2,606","2,543","2,465","2,295","2,256","2,186","2,148","2,084","2,014","1,764","1,692","1,634"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>CBSA<\/th>\n      <th>Year<\/th>\n      <th>Housing Units Permitted<\/th>\n      <th>Formatted Permits<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":15,"dom":"t","ordering":false,"columnDefs":[{"visible":false,"targets":[0,2]},{"className":"dt-right","targets":[0,1,2]},{"name":"CBSA","targets":0},{"name":"new_housing_units_permitted","targets":1},{"name":"year","targets":2},{"name":"permits_formatted","targets":3}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,15,25,50,100],"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'font-size':'14px'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'font-size':'14px'});\nvar value=data[-1]; $(this.api().cell(row, -1).node()).css({'background-color':value == 2021 ? \"lightblue\" : null});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the answer</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>peak_year <span class="ot">&lt;-</span> albuquerque_permits[<span class="dv">1</span>, ]</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">**ANSWER:** Albuquerque, NM permitted the most new housing units in **"</span>, </span>
@@ -376,7 +391,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 **ANSWER:** Albuquerque, NM permitted the most new housing units in ** 2021 ** with ** 4,021  permits**.</code></pre>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">*Note: The peak in 2021 likely reflects a COVID-19 data artifact, as there may have been pent-up demand or reporting delays from the pandemic period.*</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -390,7 +405,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Which state (not CBSA) had the highest average individual income in 2015?</strong></p>
 <div class="cell">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate state-level income for 2015</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>state_income_2015 <span class="ot">&lt;-</span> INCOME <span class="sc">%&gt;%</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2015</span>) <span class="sc">%&gt;%</span></span>
@@ -430,7 +445,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="application/json" data-for="htmlwidget-6f538bb2df658612a3d7">{"x":{"filter":"none","vertical":false,"caption":"<caption>Top 10 States by Average Individual Income (2015)<\/caption>","data":[["DC","MA","CT","AK","VT","NH","MN","MD","WA","CO"],[202663489140,186566282228,94480626751,13197939163,5715539271,22249129392,116902131752,93826139111,161492961867,123095455889],[6098283,6754601,3474313,499421,216661,847504,4469143,3665585,6350174,4840469],[33232.87704752305,27620.62218449321,27194.04577279019,26426.48019006009,26380.10196112821,26252.53614378221,26157.61718790381,25596.4979971819,25431.26564201233,25430.48119696666],["District of Columbia","Massachusetts","Connecticut","Alaska","Vermont","New Hampshire","Minnesota","Maryland","Washington","Colorado"],["$33,233","$27,621","$27,194","$26,426","$26,380","$26,253","$26,158","$25,596","$25,431","$25,430"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>State Code<\/th>\n      <th>Total Income<\/th>\n      <th>Total Population<\/th>\n      <th>Avg Individual Income<\/th>\n      <th>State Name<\/th>\n      <th>Formatted Income<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"dom":"t","ordering":false,"columnDefs":[{"visible":false,"targets":[0,1,2,3]},{"className":"dt-right","targets":[1,2,3]},{"name":"state","targets":0},{"name":"total_income","targets":1},{"name":"total_population","targets":2},{"name":"avg_individual_income","targets":3},{"name":"name","targets":4},{"name":"income_formatted","targets":5}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-size':'14px'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-size':'14px'});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the answer</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>top_state <span class="ot">&lt;-</span> state_income_2015[<span class="dv">1</span>, ]</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">**ANSWER:** The state with the highest average individual income in 2015 was **"</span>, </span>
@@ -448,7 +463,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>What is the last year in which the NYC CBSA had the most data scientists in the country?</strong></p>
 <div class="cell">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create standardized CBSA codes for joining Census and BLS data</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>census_cbsa <span class="ot">&lt;-</span> INCOME <span class="sc">%&gt;%</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(GEOID, NAME) <span class="sc">%&gt;%</span></span>
@@ -491,7 +506,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="application/json" data-for="htmlwidget-815f61616e3da61566e8">{"x":{"filter":"none","vertical":false,"caption":"<caption>CBSA with Most Data Scientists by Year (NAICS 5182)<\/caption>","data":[[],[],[],[]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Year<\/th>\n      <th>Metropolitan Area<\/th>\n      <th>Employment<\/th>\n      <th>Formatted Employment<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":15,"dom":"t","ordering":false,"columnDefs":[{"visible":false,"targets":2},{"className":"dt-right","targets":[0,2]},{"name":"YEAR","targets":0},{"name":"NAME","targets":1},{"name":"EMPLOYMENT","targets":2},{"name":"employment_formatted","targets":3}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,15,25,50,100],"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[-1]; $(this.api().cell(row, -1).node()).css({'font-size':'14px'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'font-size':'14px'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'font-size':'14px'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'background-color':''''});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find last year NYC was #1</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>nyc_years <span class="ot">&lt;-</span> data_scientists_by_year <span class="sc">%&gt;%</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(NAME, <span class="st">"New York"</span>))</span>
@@ -515,7 +530,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>What fraction of total wages in the NYC CBSA was earned by people employed in the finance and insurance industries (NAICS code 52)? In what year did this fraction peak?</strong></p>
 <div class="cell">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get NYC CBSA code</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>nyc_info <span class="ot">&lt;-</span> INCOME <span class="sc">%&gt;%</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(NAME, <span class="st">"New York.*NY"</span>)) <span class="sc">%&gt;%</span></span>
@@ -564,7 +579,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="application/json" data-for="htmlwidget-5f12cb2c4b1fc5b865e4">{"x":{"filter":"none","vertical":false,"caption":"<caption>Finance Industry Wage Share in NYC CBSA by Year<\/caption>","data":[[],[],[],[],[],[],[]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Year<\/th>\n      <th>Finance Wages<\/th>\n      <th>Total Wages<\/th>\n      <th>Finance Fraction<\/th>\n      <th>Finance %<\/th>\n      <th>Finance (Formatted)<\/th>\n      <th>Total (Formatted)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":15,"dom":"t","ordering":false,"columnDefs":[{"visible":false,"targets":[1,2,3]},{"className":"dt-right","targets":[0,1,2,3]},{"name":"YEAR","targets":0},{"name":"finance_wages","targets":1},{"name":"total_wages","targets":2},{"name":"finance_fraction","targets":3},{"name":"finance_fraction_pct","targets":4},{"name":"finance_wages_formatted","targets":5},{"name":"total_wages_formatted","targets":6}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,15,25,50,100],"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[-1]; $(this.api().cell(row, -1).node()).css({'font-size':'14px'});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-size':'14px'});\nvar value=data[4]; $(this.api().cell(row, 4).node()).css({'font-size':'14px'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'font-size':'14px'});\nvar value=data[-1]; $(this.api().cell(row, -1).node()).css({'background-color':value == \"NA\" ? \"lightblue\" : null});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the answer</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>peak_year <span class="ot">&lt;-</span> nyc_finance_fraction[<span class="dv">1</span>, ]</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">**ANSWER:** In the NYC CBSA, finance and insurance industries represented **"</span>, </span>
@@ -585,7 +600,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>The relationship between monthly rent and average household income per CBSA in 2009.</strong></p>
 <div class="cell">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create rent vs income plot for 2009</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>rent_income_2009 <span class="ot">&lt;-</span> RENT <span class="sc">%&gt;%</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2009</span>) <span class="sc">%&gt;%</span></span>
@@ -626,7 +641,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>The relationship between total employment and total employment in the health care and social services sector (NAICS 62) across different CBSAs, showing evolution over time.</strong></p>
 <div class="cell">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create standardized CBSA codes for joining</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>census_cbsa <span class="ot">&lt;-</span> INCOME <span class="sc">%&gt;%</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(GEOID, NAME) <span class="sc">%&gt;%</span></span>
@@ -740,7 +755,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>The evolution of average household size over time, with different lines representing different CBSAs.</strong></p>
 <div class="cell">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate household size over time</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>household_size_data <span class="ot">&lt;-</span> POPULATION <span class="sc">%&gt;%</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(HOUSEHOLDS, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"GEOID"</span>, <span class="st">"NAME"</span>, <span class="st">"year"</span>)) <span class="sc">%&gt;%</span></span>
@@ -828,7 +843,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Construct a suitable measure of rent burden using the rent-to-income ratio, standardized for interpretability.</strong></p>
 <div class="cell">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Join INCOME and RENT tables</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>rent_burden_data <span class="ot">&lt;-</span> INCOME <span class="sc">%&gt;%</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(RENT, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"GEOID"</span>, <span class="st">"NAME"</span>, <span class="st">"year"</span>)) <span class="sc">%&gt;%</span></span>
@@ -853,7 +868,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Baseline rent burden (2009 national average): 19.4 %</code></pre>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create standardized rent burden metric</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>rent_burden_final <span class="ot">&lt;-</span> rent_burden_data <span class="sc">%&gt;%</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
@@ -872,7 +887,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Rent burden index range: 32 to 98 </code></pre>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Interpretation: 50 = 2009 national average, 100 = twice the 2009 average</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -884,7 +899,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="table-1-single-metro-area-over-time">Table 1: Single Metro Area Over Time</h2>
 <div class="cell">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if rent_burden_final exists and has data</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"rent_burden_final"</span>)) {</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"ERROR: rent_burden_final dataset not created</span><span class="sc">\n</span><span class="st">"</span>)</span>
@@ -973,7 +988,7 @@ Years available: 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 201
 <h2 class="anchored" data-anchor-id="table-2-highest-and-lowest-rent-burden-areas">Table 2: Highest and Lowest Rent Burden Areas</h2>
 <div class="cell">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate average rent burden by metro over recent years</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>recent_burden <span class="ot">&lt;-</span> rent_burden_final <span class="sc">%&gt;%</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">2019</span>) <span class="sc">%&gt;%</span></span>
@@ -1068,7 +1083,7 @@ Years available: 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 201
 <p><strong>Construct measures of housing growth relative to population and population growth patterns.</strong></p>
 <div class="cell">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Join POPULATION and PERMITS tables</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>housing_growth_data <span class="ot">&lt;-</span> POPULATION <span class="sc">%&gt;%</span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(PERMITS, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span>)) <span class="sc">%&gt;%</span></span>
@@ -1126,7 +1141,7 @@ Years available: 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 201
 <pre><code>Housing growth metrics created for 350 CBSAs</code></pre>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Years covered:"</span>, <span class="fu">paste</span>(<span class="fu">range</span>(housing_final<span class="sc">$</span>year, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">collapse =</span> <span class="st">"-"</span>), <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -1138,7 +1153,7 @@ Years available: 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 201
 <h2 class="anchored" data-anchor-id="highlow-performers-on-individual-metrics">High/Low Performers on Individual Metrics</h2>
 <div class="cell">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average metrics over recent period</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>recent_housing <span class="ot">&lt;-</span> housing_final <span class="sc">%&gt;%</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">2018</span>) <span class="sc">%&gt;%</span></span>
@@ -1261,7 +1276,7 @@ Years available: 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 201
 <p><strong>Visualizations investigating the relationship between rent burden and housing growth metrics.</strong></p>
 <div class="cell">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine rent burden and housing growth data</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>yimby_data <span class="ot">&lt;-</span> rent_burden_final <span class="sc">%&gt;%</span></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(GEOID, NAME, year, rent_burden_index) <span class="sc">%&gt;%</span></span>
@@ -1332,7 +1347,7 @@ Years available: 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 201
 </div>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization 2: Early vs Recent Rent Burden</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>viz2 <span class="ot">&lt;-</span> yimby_analysis <span class="sc">%&gt;%</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(early_rent_burden), <span class="sc">!</span><span class="fu">is.na</span>(recent_rent_burden)) <span class="sc">%&gt;%</span></span>
@@ -1369,7 +1384,7 @@ Years available: 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 201
 <h2 class="anchored" data-anchor-id="yimby-success-stories">YIMBY Success Stories</h2>
 <div class="cell">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Top YIMBY performers</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>yimby_winners <span class="ot">&lt;-</span> yimby_analysis <span class="sc">%&gt;%</span></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(yimby_score <span class="sc">&gt;=</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
@@ -1387,7 +1402,7 @@ Years available: 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 201
 <pre><code>**YIMBY SUCCESS STORIES** (Meeting 3+ criteria)</code></pre>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">nrow</span>(yimby_winners) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"| Metropolitan Area | YIMBY Score | Burden Change | Housing Growth | Pop Growth |</span><span class="sc">\n</span><span class="st">"</span>)</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"|-------------------|-------------|---------------|----------------|------------|</span><span class="sc">\n</span><span class="st">"</span>)</span>
@@ -1519,7 +1534,7 @@ Years available: 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 201
 **Summary:** Found 108 metro areas meeting 3+ YIMBY criteria, including 26 with perfect scores.</code></pre>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary statistics</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">**YIMBY Criteria Distribution:**</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
@@ -1528,7 +1543,7 @@ Years available: 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 201
 **YIMBY Criteria Distribution:**</code></pre>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>criteria_summary <span class="ot">&lt;-</span> yimby_analysis <span class="sc">%&gt;%</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">high_early_burden =</span> <span class="fu">sum</span>(high_early_burden, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
@@ -1544,28 +1559,28 @@ Years available: 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 201
 <pre><code>- High early rent burden: 121 metros</code></pre>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"- Decreasing rent burden:"</span>, criteria_summary<span class="sc">$</span>decreasing_burden, <span class="st">"metros</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>- Decreasing rent burden: 105 metros</code></pre>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"- Positive population growth:"</span>, criteria_summary<span class="sc">$</span>positive_pop_growth, <span class="st">"metros</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>- Positive population growth: 243 metros</code></pre>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"- High housing growth:"</span>, criteria_summary<span class="sc">$</span>high_housing_growth, <span class="st">"metros</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>- High housing growth: 121 metros</code></pre>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"- Total metros analyzed:"</span>, criteria_summary<span class="sc">$</span>total_metros, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">

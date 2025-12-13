@@ -165,10 +165,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./mp04.html"> 
 <span class="menu-text">Mini Project Four</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./gp01.html"> 
-<span class="menu-text">Final Project</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-final-project" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Final Project</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-final-project">    
+        <li>
+    <a class="dropdown-item" href="./gp01.html">
+ <span class="dropdown-text">Project Overview</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./GS01.html">
+ <span class="dropdown-text">Summary Report</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./GI01.qmd">
+ <span class="dropdown-text">Individual Report</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -234,6 +249,8 @@ Exploratory Data Analysis<br>
 Show Setup Code
 </summary>
 <div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required packages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>({</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"tidyverse"</span>)) <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
@@ -289,6 +306,7 @@ Show Setup Code
 <span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>total_countries <span class="ot">&lt;-</span> COUNTRY_TOP_10 <span class="sc">|&gt;</span> <span class="fu">distinct</span>(country_iso2) <span class="sc">|&gt;</span> <span class="fu">nrow</span>()</span>
 <span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>date_range <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">min</span>(GLOBAL_TOP_10<span class="sc">$</span>week), <span class="st">"to"</span>, <span class="fu">max</span>(GLOBAL_TOP_10<span class="sc">$</span>week))</span>
 <span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>total_shows <span class="ot">&lt;-</span> GLOBAL_TOP_10 <span class="sc">|&gt;</span> <span class="fu">distinct</span>(show_title) <span class="sc">|&gt;</span> <span class="fu">nrow</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </details>
 <section id="executive-summary" class="level2">
@@ -312,12 +330,15 @@ Show Setup Code
 Show Code
 </summary>
 <div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>GLOBAL_TOP_10 <span class="sc">|&gt;</span> </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="at">n=</span><span class="dv">20</span>) <span class="sc">|&gt;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">datatable</span>(</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">options =</span> <span class="fu">list</span>(<span class="at">searching =</span> <span class="cn">FALSE</span>, <span class="at">info =</span> <span class="cn">FALSE</span>),</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">"Basic Data Exploration - First 20 Rows"</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </details>
 <div class="cell">
@@ -331,6 +352,8 @@ Show Code
 Show Code
 </summary>
 <div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>GLOBAL_TOP_10 <span class="sc">|&gt;</span> </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="st">`</span><span class="at">runtime_(minutes)</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="dv">60</span> <span class="sc">*</span> runtime)) <span class="sc">|&gt;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>season_title, <span class="sc">-</span>runtime) <span class="sc">|&gt;</span></span>
@@ -341,6 +364,7 @@ Show Code
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">"Improved Data Exploration - Formatted Table"</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">formatRound</span>(<span class="fu">c</span>(<span class="st">'Weekly Hours Viewed'</span>, <span class="st">'Weekly Views'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </details>
 </section>
@@ -357,6 +381,8 @@ Show Code
 Show Code
 </summary>
 <div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>GLOBAL_TOP_10 <span class="sc">|&gt;</span> </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="st">`</span><span class="at">runtime_(minutes)</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="dv">60</span> <span class="sc">*</span> runtime),</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">season_title =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(season_title), <span class="st">"NA"</span>, season_title)) <span class="sc">|&gt;</span></span>
@@ -367,6 +393,7 @@ Show Code
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">"Global Top 10 Netflix Shows"</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">formatRound</span>(<span class="fu">c</span>(<span class="st">'weekly_hours_viewed'</span>, <span class="st">'weekly_views'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </details>
 </section>
@@ -383,6 +410,8 @@ Show Code
 Show Code
 </summary>
 <div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>COUNTRY_TOP_10_display <span class="ot">&lt;-</span> COUNTRY_TOP_10 <span class="sc">|&gt;</span> </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">season_title =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(season_title), <span class="st">"NA"</span>, season_title)) <span class="sc">|&gt;</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n=</span><span class="dv">20</span>)</span>
@@ -404,6 +433,7 @@ Show Code
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">"Country Top 10 Netflix Shows"</span></span>
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </details>
 </section>
@@ -416,9 +446,12 @@ Show Code
 Show Code
 </summary>
 <div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>country_count <span class="ot">&lt;-</span> COUNTRY_TOP_10 <span class="sc">|&gt;</span> </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(country_iso2) <span class="sc">|&gt;</span> </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </details>
 <p><strong><b>Q2.</b> Which non-English-language film has spent the most cumulative weeks in the global top 10? How many weeks did it spend?</strong></p>
@@ -428,12 +461,15 @@ Show Code
 Show Code
 </summary>
 <div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>non_english_film <span class="ot">&lt;-</span> GLOBAL_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(category <span class="sc">==</span> <span class="st">"Films (Non-English)"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(show_title) <span class="sc">|&gt;</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_weeks =</span> <span class="fu">max</span>(cumulative_weeks_in_top_10, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_weeks)) <span class="sc">|&gt;</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </details>
 <p><strong><b>Q3.</b> What is the longest film (English or non-English) to have ever appeared in the Netflix global Top 10? How long is it in minutes?</strong></p>
@@ -443,12 +479,15 @@ Show Code
 Show Code
 </summary>
 <div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>longest_film <span class="ot">&lt;-</span> GLOBAL_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(category, <span class="st">"Films"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(runtime)) <span class="sc">|&gt;</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">runtime_minutes =</span> <span class="fu">round</span>(<span class="dv">60</span> <span class="sc">*</span> runtime)) <span class="sc">|&gt;</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(runtime_minutes)) <span class="sc">|&gt;</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </details>
 <p><strong><b>Q4.</b> For each of the four categories, what program has the most total hours of global viewership?</strong></p>
@@ -463,6 +502,8 @@ Show Code
 Show Code
 </summary>
 <div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>top_programs_by_category <span class="ot">&lt;-</span> GLOBAL_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(category, show_title) <span class="sc">|&gt;</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_hours =</span> <span class="fu">sum</span>(weekly_hours_viewed, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
@@ -477,6 +518,7 @@ Show Code
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">options =</span> <span class="fu">list</span>(<span class="at">searching =</span> <span class="cn">FALSE</span>, <span class="at">info =</span> <span class="cn">FALSE</span>),</span>
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Top Programs by Category"</span></span>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </details>
 <p><strong><b>Q5.</b> Which TV show had the longest run in a country’s Top 10? How long was this run and in what country did it occur?</strong></p>
@@ -486,12 +528,15 @@ Show Code
 Show Code
 </summary>
 <div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>longest_country_run <span class="ot">&lt;-</span> COUNTRY_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(category, <span class="st">"TV"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country_name, show_title) <span class="sc">|&gt;</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">max_weeks =</span> <span class="fu">max</span>(cumulative_weeks_in_top_10, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(max_weeks)) <span class="sc">|&gt;</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </details>
 <p><strong><b>Q6.</b> Netflix provides over 200 weeks of service history for all but one country in our data set. Which country is this and when did Netflix cease operations in that country?</strong></p>
@@ -501,6 +546,8 @@ Show Code
 Show Code
 </summary>
 <div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>country_weeks <span class="ot">&lt;-</span> COUNTRY_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country_name) <span class="sc">|&gt;</span></span>
@@ -511,6 +558,7 @@ Show Code
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(weeks_count <span class="sc">&lt;</span> <span class="dv">200</span>) <span class="sc">|&gt;</span></span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(weeks_count)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </details>
 <p><strong><b>Q7.</b> What is the total viewership of the TV show Squid Game?</strong></p>
@@ -520,10 +568,13 @@ Show Code
 Show Code
 </summary>
 <div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>squid_game_total <span class="ot">&lt;-</span> GLOBAL_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(show_title, <span class="st">"Squid Game"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_hours =</span> <span class="fu">sum</span>(weekly_hours_viewed, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(total_hours)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </details>
 <p><strong><b>Q8.</b> The movie Red Notice has a runtime of 1 hour and 58 minutes. Approximately how many views did it receive in 2021?</strong></p>
@@ -533,11 +584,14 @@ Show Code
 Show Code
 </summary>
 <div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>red_notice_2021 <span class="ot">&lt;-</span> GLOBAL_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(show_title <span class="sc">==</span> <span class="st">"Red Notice"</span>, <span class="fu">year</span>(week) <span class="sc">==</span> <span class="dv">2021</span>) <span class="sc">|&gt;</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_views =</span> <span class="fu">sum</span>(weekly_views, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(total_views)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </details>
 <p><strong><b>Q9.</b> How many Films reached Number 1 in the US but did not originally debut there? What is the most recent film to pull this off?</strong></p>
@@ -549,6 +603,8 @@ Show Code
 Show Code
 </summary>
 <div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>us_films_analysis <span class="ot">&lt;-</span> COUNTRY_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">==</span> <span class="st">"United States"</span>, <span class="fu">str_detect</span>(category, <span class="st">"Films"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(show_title) <span class="sc">|&gt;</span></span>
@@ -575,6 +631,7 @@ Show Code
 <span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
 <span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(latest_week)) <span class="sc">|&gt;</span></span>
 <span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </details>
 <p><strong><b>Q10.</b> Which TV show/season hit the top 10 in the most countries in its debut week? In how many countries did it chart?</strong></p>
@@ -584,6 +641,8 @@ Show Code
 Show Code
 </summary>
 <div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tv_debut_countries <span class="ot">&lt;-</span> COUNTRY_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(category, <span class="st">"TV"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(show_title) <span class="sc">|&gt;</span></span>
@@ -591,6 +650,7 @@ Show Code
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">countries_count =</span> <span class="fu">n_distinct</span>(country_name), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(countries_count)) <span class="sc">|&gt;</span></span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </details>
 <hr>
@@ -607,6 +667,8 @@ Show Code
 Show Code
 </summary>
 <div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analyze Stranger Things most recent season data</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>stranger_things_data <span class="ot">&lt;-</span> GLOBAL_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(show_title, <span class="st">"Stranger"</span>)) <span class="sc">|&gt;</span></span>
@@ -628,6 +690,7 @@ Show Code
 <span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>comparable_show_1 <span class="ot">&lt;-</span> comparable_shows[<span class="dv">1</span>]</span>
 <span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>comparable_show_2 <span class="ot">&lt;-</span> comparable_shows[<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </details>
 </section>
@@ -640,6 +703,8 @@ Show Code
 Show Code
 </summary>
 <div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analysis focusing on India's overall Netflix market</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Count total unique shows that appeared in India's Top 10</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>india_total_shows <span class="ot">&lt;-</span> COUNTRY_TOP_10 <span class="sc">|&gt;</span></span>
@@ -703,6 +768,7 @@ Show Code
 <span id="cb17-61"><a href="#cb17-61" aria-hidden="true" tabindex="-1"></a>avg_shows_per_week <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(india_monthly<span class="sc">$</span>shows, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
 <span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a>subscriber_estimate <span class="ot">&lt;-</span> <span class="st">"30-40 million"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </details>
 </section>
@@ -715,6 +781,8 @@ Show Code
 Show Code
 </summary>
 <div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic metrics that don't need weekly_hours_viewed</span></span>
@@ -771,6 +839,7 @@ Show Code
 <span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a>cv <span class="ot">&lt;-</span> <span class="fu">sd</span>(weekly_metrics<span class="sc">$</span>total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(weekly_metrics<span class="sc">$</span>total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a>consistency_level <span class="ot">&lt;-</span> <span class="cf">if</span>(cv <span class="sc">&lt;</span> <span class="fl">0.2</span>) <span class="st">"remarkably consistent"</span> <span class="cf">else</span> <span class="cf">if</span>(cv <span class="sc">&lt;</span> <span class="fl">0.4</span>) <span class="st">"consistent"</span> <span class="cf">else</span> <span class="st">"variable"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </details>
 <hr>
