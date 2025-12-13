@@ -26,7 +26,7 @@ website:
             text: Project Overview
           - href: GS01.qmd
             text: Summary Report
-          - href: gp01-individual.qmd
+          - href: GI01.qmd
             text: Individual Report
 
 format:
