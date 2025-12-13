@@ -36,6 +36,8 @@ format:
     toc-location: left
     code-fold: true
     code-summary: "Show code"
+    code-tools: true
+    embed-resources: false
 
 editor:
   mode: source
