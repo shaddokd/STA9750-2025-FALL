@@ -179,10 +179,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./mp04.html"> 
 <span class="menu-text">Mini Project Four</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./gp01.html" aria-current="page"> 
-<span class="menu-text">Final Project</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-final-project" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Final Project</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-final-project">    
+        <li>
+    <a class="dropdown-item" href="./gp01.html">
+ <span class="dropdown-text">Project Overview</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./gp01-summary.qmd">
+ <span class="dropdown-text">Summary Report</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./gp01-individual.qmd">
+ <span class="dropdown-text">Individual Report</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -365,12 +380,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="previous-research" class="level2">
 <h2 class="anchored" data-anchor-id="previous-research">Previous Research</h2>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Placeholder for literature review synthesis</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Key themes to address:</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># - Urban service delivery equity studies</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># - 311 system analysis in other cities</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># - Socioeconomic factors in municipal services</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># - Digital divide and service access patterns</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 <p><strong>Key Findings from Literature:</strong> - [To be completed with actual literature review] - Studies on urban service equity - Analysis of 311 systems in other major cities - Research on digital divide impacts on service access</p>
 </section>
@@ -386,20 +404,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="nyc-311-service-requests-2010-present" class="level3">
 <h3 class="anchored" data-anchor-id="nyc-311-service-requests-2010-present">3.1 NYC 311 Service Requests (2010-Present)</h3>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data source information</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Data Source: NYC Open Data</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Data Source: NYC Open Data</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"URL: https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9/</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>URL: https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9/</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Description: Comprehensive database of all 311 service requests</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Description: Comprehensive database of all 311 service requests</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Key Variables: Location, complaint type, resolution time, status</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Key Variables: Location, complaint type, resolution time, status</code></pre>
 </div>
@@ -408,20 +438,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="resolution-satisfaction-survey" class="level3">
 <h3 class="anchored" data-anchor-id="resolution-satisfaction-survey">3.2 311 Resolution Satisfaction Survey</h3>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data source information  </span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Data Source: NYC Open Data</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Data Source: NYC Open Data</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"URL: https://data.cityofnewyork.us/City-Government/311-Resolution-Satisfaction-Survey/5ijn-vbdv</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>URL: https://data.cityofnewyork.us/City-Government/311-Resolution-Satisfaction-Survey/5ijn-vbdv</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Description: Customer satisfaction ratings for resolved 311 requests</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Description: Customer satisfaction ratings for resolved 311 requests</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Key Variables: Resolution satisfaction scores, feedback</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Key Variables: Resolution satisfaction scores, feedback</code></pre>
 </div>
@@ -430,20 +472,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="property-valuation-and-assessment-data" class="level3">
 <h3 class="anchored" data-anchor-id="property-valuation-and-assessment-data">3.3 Property Valuation and Assessment Data</h3>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data source information</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Data Source: Data.gov</span><span class="sc">\n</span><span class="st">"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Data Source: Data.gov</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"URL: https://catalog.data.gov/dataset/property-valuation-and-assessment-data-db7c2</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>URL: https://catalog.data.gov/dataset/property-valuation-and-assessment-data-db7c2</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Description: Property values and assessments by neighborhood</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Description: Property values and assessments by neighborhood</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Key Variables: Property values, assessment data, geographic identifiers</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Key Variables: Property values, assessment data, geographic identifiers</code></pre>
 </div>
@@ -523,6 +577,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="load-property-valuation-data" class="level3">
 <h3 class="anchored" data-anchor-id="load-property-valuation-data">3.2 Load Property Valuation Data</h3>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to load property data</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>load_property_data <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># For development - create sample property data with better structure</span></span>
@@ -545,15 +601,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>df_property <span class="ot">&lt;-</span> <span class="fu">load_property_data</span>()</span>
 <span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Property Data Loaded:</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Property Data Loaded:</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Rows:"</span>, <span class="fu">nrow</span>(df_property), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 100 </code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Median Property Value Range: $"</span>, </span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(scales<span class="sc">::</span><span class="fu">comma</span>(<span class="fu">range</span>(df_property<span class="sc">$</span>median_property_value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)), <span class="at">collapse =</span> <span class="st">" - "</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Median Property Value Range: $ 100,000 - 1,040,378 </code></pre>
 </div>
@@ -562,6 +625,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="data-quality-assessment" class="level3">
 <h3 class="anchored" data-anchor-id="data-quality-assessment">3.3 Data Quality Assessment</h3>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assess data quality for 311 data</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>assess_data_quality <span class="ot">&lt;-</span> <span class="cf">function</span>(df, dataset_name) {</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"=== Data Quality Assessment:"</span>, dataset_name, <span class="st">"===</span><span class="sc">\n</span><span class="st">"</span>)</span>
@@ -582,6 +647,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Assess both datasets</span></span>
 <span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a><span class="fu">assess_data_quality</span>(df, <span class="st">"311 Service Requests"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>=== Data Quality Assessment: 311 Service Requests ===
 # A tibble: 41 × 3
@@ -601,7 +667,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 Overall Completeness: 72.28 %</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">assess_data_quality</span>(df_property, <span class="st">"Property Data"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>=== Data Quality Assessment: Property Data ===
 # A tibble: 6 × 3
@@ -624,6 +693,8 @@ Overall Completeness: 100 %</code></pre>
 <section id="clean-and-process-311-data" class="level3">
 <h3 class="anchored" data-anchor-id="clean-and-process-311-data">3.4 Clean and Process 311 Data</h3>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean and process 311 data</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>df_311_clean <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove rows with missing essential information</span></span>
@@ -657,14 +728,21 @@ Overall Completeness: 100 %</code></pre>
 <span id="cb37-31"><a href="#cb37-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">borough =</span> <span class="fu">str_to_title</span>(borough))</span>
 <span id="cb37-32"><a href="#cb37-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-33"><a href="#cb37-33" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Cleaned 311 Data:</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Cleaned 311 Data:</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Rows after cleaning:"</span>, <span class="fu">nrow</span>(df_311_clean), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows after cleaning: 48491 </code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Response time range:"</span>, <span class="fu">round</span>(<span class="fu">range</span>(df_311_clean<span class="sc">$</span>response_time_days, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>), <span class="st">"days</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Response time range: 0 362.02 days</code></pre>
 </div>
@@ -673,6 +751,8 @@ Overall Completeness: 100 %</code></pre>
 <section id="integrate-geographic-data" class="level3">
 <h3 class="anchored" data-anchor-id="integrate-geographic-data">3.5 Integrate Geographic Data</h3>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create spatial data and integrate with property information</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This would typically involve spatial joins with census tracts or neighborhoods</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -703,22 +783,35 @@ Overall Completeness: 100 %</code></pre>
 <span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a>df_integrated <span class="ot">&lt;-</span> <span class="fu">assign_neighborhoods</span>(df_311_clean, df_property)</span>
 <span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Integrated Dataset:</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Integrated Dataset:</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Rows:"</span>, <span class="fu">nrow</span>(df_integrated), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1000 </code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Unique Neighborhoods:"</span>, <span class="fu">length</span>(<span class="fu">unique</span>(df_integrated<span class="sc">$</span>neighborhood)), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Unique Neighborhoods: 98 </code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Columns:"</span>, <span class="fu">paste</span>(<span class="fu">names</span>(df_integrated), <span class="at">collapse =</span> <span class="st">", "</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Columns: unique_key, created_date, closed_date, complaint_type, borough, latitude.x, longitude.x, status, response_time_days, year, month, weekday, complaint_category, neighborhood, median_property_value, median_income, latitude.y, longitude.y </code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Unique Boroughs:"</span>, <span class="fu">paste</span>(<span class="fu">unique</span>(df_integrated<span class="sc">$</span>borough), <span class="at">collapse =</span> <span class="st">", "</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Unique Boroughs: Manhattan, Staten Island, Queens, Brooklyn, Bronx </code></pre>
 </div>
@@ -731,6 +824,8 @@ Overall Completeness: 100 %</code></pre>
 <section id="overall-311-service-patterns" class="level2">
 <h2 class="anchored" data-anchor-id="overall-311-service-patterns">4.1 Overall 311 Service Patterns</h2>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic statistics</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>summary_stats <span class="ot">&lt;-</span> df_integrated <span class="sc">|&gt;</span></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
@@ -741,6 +836,7 @@ Overall Completeness: 100 %</code></pre>
 <span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(summary_stats, <span class="at">caption =</span> <span class="st">"Overall 311 Service Request Statistics"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Overall 311 Service Request Statistics</caption>
@@ -768,6 +864,8 @@ Overall Completeness: 100 %</code></pre>
 </tbody>
 </table>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Complaint type distribution</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>complaint_dist <span class="ot">&lt;-</span> df_integrated <span class="sc">|&gt;</span></span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(complaint_category, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
@@ -785,6 +883,7 @@ Overall Completeness: 100 %</code></pre>
 <span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
 <span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1012,6 +1111,8 @@ Overall Completeness: 100 %</code></pre>
 <section id="geographic-distribution" class="level2">
 <h2 class="anchored" data-anchor-id="geographic-distribution">4.2 Geographic Distribution</h2>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Response times by borough</span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>borough_stats <span class="ot">&lt;-</span> df_integrated <span class="sc">|&gt;</span></span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(borough)) <span class="sc">|&gt;</span>  <span class="co"># Remove any rows with missing borough</span></span>
@@ -1026,6 +1127,7 @@ Overall Completeness: 100 %</code></pre>
 <span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_response_time))</span>
 <span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(borough_stats, <span class="at">caption =</span> <span class="st">"311 Service Statistics by Borough"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>311 Service Statistics by Borough</caption>
@@ -1084,6 +1186,8 @@ Overall Completeness: 100 %</code></pre>
 </tbody>
 </table>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization - also filter for non-missing borough</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> df_integrated <span class="sc">|&gt;</span></span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(borough)) <span class="sc">|&gt;</span></span>
@@ -1110,6 +1214,7 @@ Overall Completeness: 100 %</code></pre>
 <span id="cb60-24"><a href="#cb60-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
 <span id="cb60-25"><a href="#cb60-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb60-26"><a href="#cb60-26" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">/</span> p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1126,15 +1231,23 @@ Overall Completeness: 100 %</code></pre>
 <h2 class="anchored" data-anchor-id="reems-analysis-average-response-time-by-neighborhood">5.1 Reem’s Analysis: Average Response Time by Neighborhood</h2>
 <p><strong>Research Question:</strong> What is the average response time to quality-of-life complaints by neighborhood?</p>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reem's analysis code here - PLACEHOLDER</span></span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"=== REEM'S ANALYSIS SECTION ===</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>=== REEM'S ANALYSIS SECTION ===</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Research Question: What is the average response time by neighborhood?</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Research Question: What is the average response time by neighborhood?</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create placeholder data for demonstration</span></span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>placeholder_neighborhoods <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">neighborhood =</span> <span class="fu">paste</span>(<span class="st">"Neighborhood"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
@@ -1145,6 +1258,7 @@ Overall Completeness: 100 %</code></pre>
 <span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(placeholder_neighborhoods, <span class="at">caption =</span> <span class="st">"PLACEHOLDER: Top 10 Neighborhoods Analysis"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>PLACEHOLDER: Top 10 Neighborhoods Analysis</caption>
@@ -1238,6 +1352,8 @@ Overall Completeness: 100 %</code></pre>
 </tbody>
 </table>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Placeholder visualization</span></span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(placeholder_neighborhoods, <span class="fu">aes</span>(<span class="at">x =</span> median_income, <span class="at">y =</span> avg_response_time, <span class="at">color =</span> borough)) <span class="sc">+</span></span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> request_count), <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
@@ -1252,6 +1368,7 @@ Overall Completeness: 100 %</code></pre>
 <span id="cb66-12"><a href="#cb66-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb66-13"><a href="#cb66-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>()) <span class="sc">+</span></span>
 <span id="cb66-14"><a href="#cb66-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1259,7 +1376,10 @@ Overall Completeness: 100 %</code></pre>
 </figure>
 </div>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"PLACEHOLDER: Correlation analysis results will go here</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>PLACEHOLDER: Correlation analysis results will go here</code></pre>
 </div>
@@ -1272,6 +1392,8 @@ Overall Completeness: 100 %</code></pre>
 <section id="data-preparation" class="level3">
 <h3 class="anchored" data-anchor-id="data-preparation">Data Preparation</h3>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sarr's individual cleaned dataset (Jan–Apr 2024)</span></span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
@@ -1348,6 +1470,7 @@ Overall Completeness: 100 %</code></pre>
 <span id="cb69-74"><a href="#cb69-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(median_income))</span>
 <span id="cb69-75"><a href="#cb69-75" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-76"><a href="#cb69-76" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(nyc_joined)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 194
 Columns: 5
@@ -1360,6 +1483,8 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 </div>
 <p>Before visualizing the relationship between income and response times, complaint-level data were aggregated to the ZIP Code level and merged with Census median household income. This produces a dataset that allows us to examine whether higher-income neighborhoods tend to receive faster service.</p>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nyc_joined, <span class="fu">aes</span>(<span class="at">x =</span> median_income, <span class="at">y =</span> avg_response)) <span class="sc">+</span></span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">color =</span> <span class="st">"#0072B2"</span>) <span class="sc">+</span></span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
@@ -1371,6 +1496,7 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>()) <span class="sc">+</span></span>
 <span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1408,15 +1534,23 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <h2 class="anchored" data-anchor-id="juans-analysis-complaint-type-resolution-by-wealth">5.3 Juan’s Analysis: Complaint Type Resolution by Wealth</h2>
 <p><strong>Research Question:</strong> Do certain types of quality-of-life complaints get resolved faster in wealthier neighborhoods?</p>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Juan's analysis code here - PLACEHOLDER</span></span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"=== JUAN'S ANALYSIS SECTION ===</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>=== JUAN'S ANALYSIS SECTION ===</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Research Question: Complaint type resolution by wealth?</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Research Question: Complaint type resolution by wealth?</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Placeholder data for complaint types by wealth</span></span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>placeholder_complaint_wealth <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">complaint_category =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Noise"</span>, <span class="st">"Parking"</span>, <span class="st">"Sanitation"</span>, <span class="st">"Other"</span>), <span class="dv">2</span>),</span>
@@ -1426,6 +1560,7 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb76-8"><a href="#cb76-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb76-9"><a href="#cb76-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(placeholder_complaint_wealth, <span class="at">caption =</span> <span class="st">"PLACEHOLDER: Response Times by Complaint Type and Wealth"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>PLACEHOLDER: Response Times by Complaint Type and Wealth</caption>
@@ -1489,6 +1624,8 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 </tbody>
 </table>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Placeholder visualization</span></span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(placeholder_complaint_wealth, <span class="fu">aes</span>(<span class="at">x =</span> complaint_category, <span class="at">y =</span> avg_response_time, <span class="at">fill =</span> wealth_category)) <span class="sc">+</span></span>
 <span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
@@ -1500,6 +1637,7 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <span id="cb77-9"><a href="#cb77-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Neighborhood Type"</span></span>
 <span id="cb77-10"><a href="#cb77-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb77-11"><a href="#cb77-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1507,7 +1645,10 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 </figure>
 </div>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"PLACEHOLDER: Statistical comparison tests will go here</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>PLACEHOLDER: Statistical comparison tests will go here</code></pre>
 </div>
@@ -1520,6 +1661,8 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <section id="data-preparation-1" class="level3">
 <h3 class="anchored" data-anchor-id="data-preparation-1">Data Preparation</h3>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
@@ -1609,19 +1752,29 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <span id="cb80-87"><a href="#cb80-87" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb80-88"><a href="#cb80-88" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb80-89"><a href="#cb80-89" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Analysis Dataset Summary:</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis Dataset Summary:</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Total complaints with income data:"</span>, <span class="fu">nrow</span>(df_kyle_analysis), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Total complaints with income data: 43459 </code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Unique ZIP codes:"</span>, <span class="fu">n_distinct</span>(df_kyle_analysis<span class="sc">$</span>zip_code), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Unique ZIP codes: 194 </code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Income range: $"</span>, <span class="fu">comma</span>(<span class="fu">min</span>(df_kyle_analysis<span class="sc">$</span>median_income)), </span>
 <span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">" - $"</span>, <span class="fu">comma</span>(<span class="fu">max</span>(df_kyle_analysis<span class="sc">$</span>median_income)), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Income range: $ 25,000  - $ 189,566 </code></pre>
 </div>
@@ -1631,6 +1784,8 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <h3 class="anchored" data-anchor-id="borough-level-disparity-analysis">Borough-Level Disparity Analysis</h3>
 <p>First, let’s examine how response times differ between the wealthiest and least wealthy neighborhoods within each borough.</p>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate average response times by borough and wealth quintile</span></span>
 <span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>borough_wealth_stats <span class="ot">&lt;-</span> df_kyle_analysis <span class="sc">%&gt;%</span></span>
 <span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(borough, wealth_quintile_within, wealth_category_within) <span class="sc">%&gt;%</span></span>
@@ -1666,6 +1821,7 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <span id="cb88-33"><a href="#cb88-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
 <span id="cb88-34"><a href="#cb88-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()</span>
 <span id="cb88-35"><a href="#cb88-35" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1679,6 +1835,8 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <h3 class="anchored" data-anchor-id="calculating-disparity-metrics">Calculating Disparity Metrics</h3>
 <p>Now let’s quantify the disparity between the wealthiest (top 20%) and least wealthy (bottom 20%) neighborhoods in each borough.</p>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate disparity: difference between lowest and highest wealth quintiles</span></span>
 <span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>disparity_by_borough <span class="ot">&lt;-</span> borough_wealth_stats <span class="sc">%&gt;%</span></span>
 <span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(wealth_quintile_within <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)) <span class="sc">%&gt;%</span></span>
@@ -1713,6 +1871,7 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <span id="cb89-32"><a href="#cb89-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb89-33"><a href="#cb89-33" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(disparity_table, </span>
 <span id="cb89-34"><a href="#cb89-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">"Response Time Disparities: Lowest vs. Highest Wealth Quintiles by Borough"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Response Time Disparities: Lowest vs.&nbsp;Highest Wealth Quintiles by Borough</caption>
@@ -1776,6 +1935,8 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <section id="visualizing-borough-disparities" class="level3">
 <h3 class="anchored" data-anchor-id="visualizing-borough-disparities">Visualizing Borough Disparities</h3>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar chart showing disparity by borough</span></span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(disparity_by_borough, </span>
 <span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(borough, disparity_days), <span class="at">y =</span> disparity_days, </span>
@@ -1801,6 +1962,7 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <span id="cb90-23"><a href="#cb90-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
 <span id="cb90-24"><a href="#cb90-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span></span>
 <span id="cb90-25"><a href="#cb90-25" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1814,6 +1976,8 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <h3 class="anchored" data-anchor-id="neighborhood-zip-code-level-analysis">Neighborhood (ZIP Code) Level Analysis</h3>
 <p>Let’s identify specific neighborhoods with the most extreme response times relative to their income level.</p>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate to ZIP code level</span></span>
 <span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>zip_analysis <span class="ot">&lt;-</span> df_kyle_analysis <span class="sc">%&gt;%</span></span>
 <span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(zip_code, borough) <span class="sc">%&gt;%</span></span>
@@ -1847,6 +2011,7 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <span id="cb91-31"><a href="#cb91-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
 <span id="cb91-32"><a href="#cb91-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"right"</span></span>
 <span id="cb91-33"><a href="#cb91-33" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1859,6 +2024,8 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <section id="statistical-testing-within-borough-disparities" class="level3">
 <h3 class="anchored" data-anchor-id="statistical-testing-within-borough-disparities">Statistical Testing: Within-Borough Disparities</h3>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform t-tests comparing lowest and highest quintiles within each borough</span></span>
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>statistical_tests <span class="ot">&lt;-</span> df_kyle_analysis <span class="sc">%&gt;%</span></span>
 <span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(wealth_quintile_within <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)) <span class="sc">%&gt;%</span></span>
@@ -1895,6 +2062,7 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <span id="cb92-34"><a href="#cb92-34" aria-hidden="true" tabindex="-1"></a>          <span class="st">`</span><span class="at">T-Statistic</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="st">`</span><span class="at">T-Statistic</span><span class="st">`</span>, <span class="dv">2</span>)</span>
 <span id="cb92-35"><a href="#cb92-35" aria-hidden="true" tabindex="-1"></a>        ),</span>
 <span id="cb92-36"><a href="#cb92-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">"T-Test Results: Response Time Differences by Wealth Within Each Borough"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>T-Test Results: Response Time Differences by Wealth Within Each Borough</caption>
@@ -1965,6 +2133,8 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <section id="regression-analysis-borough-specific-income-effects" class="level3">
 <h3 class="anchored" data-anchor-id="regression-analysis-borough-specific-income-effects">Regression Analysis: Borough-Specific Income Effects</h3>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression models for each borough</span></span>
 <span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>borough_regressions <span class="ot">&lt;-</span> df_kyle_analysis <span class="sc">%&gt;%</span></span>
 <span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">borough =</span> <span class="fu">str_to_title</span>(borough)) <span class="sc">%&gt;%</span></span>
@@ -1993,6 +2163,7 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <span id="cb93-26"><a href="#cb93-26" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span></span>
 <span id="cb93-27"><a href="#cb93-27" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(<span class="at">Borough =</span> borough, Intercept, <span class="st">`</span><span class="at">Days Saved per $10K Income</span><span class="st">`</span>, <span class="st">`</span><span class="at">R-Squared</span><span class="st">`</span>, <span class="st">`</span><span class="at">P-Value</span><span class="st">`</span>),</span>
 <span id="cb93-28"><a href="#cb93-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">"Linear Regression: Effect of Income on Response Time by Borough"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Linear Regression: Effect of Income on Response Time by Borough</caption>
@@ -2056,6 +2227,8 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <section id="identifying-extreme-neighborhoods" class="level3">
 <h3 class="anchored" data-anchor-id="identifying-extreme-neighborhoods">Identifying Extreme Neighborhoods</h3>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find neighborhoods with unexpectedly long/short response times given their income</span></span>
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>zip_residuals <span class="ot">&lt;-</span> zip_analysis <span class="sc">%&gt;%</span></span>
 <span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
@@ -2085,6 +2258,7 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <span id="cb94-27"><a href="#cb94-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb94-28"><a href="#cb94-28" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(underserved, </span>
 <span id="cb94-29"><a href="#cb94-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">"Top 10 Underserved Neighborhoods: Longest Wait Times Relative to Income"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Top 10 Underserved Neighborhoods: Longest Wait Times Relative to Income</caption>
@@ -2202,6 +2376,8 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 </tbody>
 </table>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Top 10 over-served neighborhoods (shorter than expected given income)</span></span>
 <span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>overserved <span class="ot">&lt;-</span> zip_residuals <span class="sc">%&gt;%</span></span>
 <span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(residual) <span class="sc">%&gt;%</span></span>
@@ -2224,6 +2400,7 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <span id="cb95-20"><a href="#cb95-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb95-21"><a href="#cb95-21" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(overserved, </span>
 <span id="cb95-22"><a href="#cb95-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">"Top 10 Over-Served Neighborhoods: Shortest Wait Times Relative to Income"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Top 10 Over-Served Neighborhoods: Shortest Wait Times Relative to Income</caption>
@@ -2346,6 +2523,8 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <section id="summary-visualization-disparity-dashboard" class="level3">
 <h3 class="anchored" data-anchor-id="summary-visualization-disparity-dashboard">Summary Visualization: Disparity Dashboard</h3>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
 <span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 1: Borough disparity bar chart</span></span>
@@ -2417,6 +2596,7 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <span id="cb96-69"><a href="#cb96-69" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>)</span>
 <span id="cb96-70"><a href="#cb96-70" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb96-71"><a href="#cb96-71" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -2429,6 +2609,8 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <section id="key-findings" class="level3">
 <h3 class="anchored" data-anchor-id="key-findings">Key Findings</h3>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate key findings summary</span></span>
 <span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>max_disparity_borough <span class="ot">&lt;-</span> disparity_by_borough <span class="sc">%&gt;%</span> </span>
 <span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(disparity_days <span class="sc">==</span> <span class="fu">max</span>(disparity_days)) <span class="sc">%&gt;%</span> </span>
@@ -2449,54 +2631,88 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <span id="cb97-18"><a href="#cb97-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(borough)</span>
 <span id="cb97-19"><a href="#cb97-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb97-20"><a href="#cb97-20" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"=== KEY FINDINGS: Borough and Neighborhood Disparities ===</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>=== KEY FINDINGS: Borough and Neighborhood Disparities ===</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"1. LARGEST DISPARITY:</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>1. LARGEST DISPARITY:</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"   "</span>, max_disparity_borough, <span class="st">"shows the greatest disparity at"</span>, max_disparity_value, <span class="st">"days</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Brooklyn shows the greatest disparity at 1.09 days</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"   longer wait times for low-wealth vs. high-wealth neighborhoods.</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   longer wait times for low-wealth vs. high-wealth neighborhoods.</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"2. SMALLEST DISPARITY:</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>2. SMALLEST DISPARITY:</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"   "</span>, min_disparity_borough, <span class="st">"shows the smallest gap between wealth groups.</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Staten Island shows the smallest gap between wealth groups.</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"3. STATISTICAL SIGNIFICANCE:</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>3. STATISTICAL SIGNIFICANCE:</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">length</span>(significant_boroughs) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
 <span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"   Significant differences (p &lt; 0.05) found in:"</span>, <span class="fu">paste</span>(significant_boroughs, <span class="at">collapse =</span> <span class="st">", "</span>), <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
 <span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
 <span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"   No statistically significant differences found at α = 0.05</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
 <span id="cb111-5"><a href="#cb111-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Significant differences (p &lt; 0.05) found in: Bronx, Brooklyn, Manhattan, Queens, Staten Island </code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"4. OVERALL PATTERN:</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>4. OVERALL PATTERN:</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"   The analysis reveals that wealth-based disparities in 311 response times</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   The analysis reveals that wealth-based disparities in 311 response times</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"   vary considerably across boroughs, with some showing meaningful gaps</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   vary considerably across boroughs, with some showing meaningful gaps</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"   between their wealthiest and least wealthy neighborhoods.</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   between their wealthiest and least wealthy neighborhoods.</code></pre>
 </div>
@@ -2882,10 +3098,13 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 </details>
 </div>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co">#show data in clean formatted datatable</span></span>
 <span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(satisfaction_table, </span>
 <span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">options =</span> <span class="fu">list</span>(<span class="at">pageLength =</span> <span class="dv">10</span>, <span class="at">dom =</span> <span class="st">'t'</span>),</span>
 <span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">rownames =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> <span class="fu">formatCurrency</span>(<span class="st">'Unique Count'</span>, <span class="at">currency =</span> <span class="st">""</span>, <span class="at">interval =</span> <span class="dv">3</span>, <span class="at">mark =</span> <span class="st">","</span>, <span class="at">digits =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div class="datatables html-widget html-fill-item" id="htmlwidget-405b50a3b8a19adc9938" style="width:100%;height:auto;"></div>
 <script type="application/json" data-for="htmlwidget-405b50a3b8a19adc9938">{"x":{"filter":"none","vertical":false,"data":[["Agree","Disagree","Neutral","Strongly Agree","Strongly Disagree"],[40917,34410,20771,106832,235197]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Overall Satisfaction<\/th>\n      <th>Unique Count<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"dom":"t","columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"\", 0, 3, \",\", \".\", true, null);\n  }"},{"className":"dt-right","targets":1},{"name":"Overall Satisfaction","targets":0},{"name":"Unique Count","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render"],"jsHooks":[]}</script>
@@ -3246,16 +3465,22 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 </div>
 <p>This is a real complaint from Brooklyn. We know that average turnaround time is roughly <strong>12 days</strong> for a complaint from this borough. Where does our model predict the complaint came from? There’s roughly a 45% that we will be accurate here.</p>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb139"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Predicted Borough:"</span>, example_prediction<span class="sc">$</span>predicted_borough, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Predicted Borough: BROOKLYN </code></pre>
 </div>
 </div>
 <p>Below is the model’s probability of outputting a borough based on the complaint.</p>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb141"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(example_prediction<span class="sc">$</span>probabilities, </span>
 <span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">options =</span> <span class="fu">list</span>(<span class="at">pageLength =</span> <span class="dv">10</span>, <span class="at">dom =</span> <span class="st">'t'</span>),</span>
 <span id="cb141-3"><a href="#cb141-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">rownames =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div class="datatables html-widget html-fill-item" id="htmlwidget-72a4f461e8e297ab21fa" style="width:100%;height:auto;"></div>
 <script type="application/json" data-for="htmlwidget-72a4f461e8e297ab21fa">{"x":{"filter":"none","vertical":false,"data":[["BROOKLYN","QUEENS","BRONX","MANHATTAN","STATEN ISLAND"],["54%","46%","0%","0%","0%"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Borough<\/th>\n      <th>Probability<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"dom":"t","columnDefs":[{"name":"Borough","targets":0},{"name":"Probability","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
@@ -3267,6 +3492,8 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <section id="correlation-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="correlation-analysis">6.1 Correlation Analysis</h2>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation matrix of key variables - PLACEHOLDER</span></span>
 <span id="cb142-2"><a href="#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Your team will replace this with actual correlation analysis</span></span>
 <span id="cb142-3"><a href="#cb142-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3287,6 +3514,7 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <span id="cb142-18"><a href="#cb142-18" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(sample_correlations, <span class="at">method =</span> <span class="st">"color"</span>, <span class="at">type =</span> <span class="st">"upper"</span>, </span>
 <span id="cb142-19"><a href="#cb142-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">addCoef.col =</span> <span class="st">"black"</span>, <span class="at">tl.col =</span> <span class="st">"black"</span>, <span class="at">tl.srt =</span> <span class="dv">45</span>,</span>
 <span id="cb142-20"><a href="#cb142-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">"Correlation Matrix: Response Time vs Wealth Indicators"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -3294,11 +3522,17 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 </figure>
 </div>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"PLACEHOLDER: Your team will calculate actual correlations here</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>PLACEHOLDER: Your team will calculate actual correlations here</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb145"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Sample correlation (Response Time vs Income):"</span>, sample_correlations[<span class="dv">1</span>,<span class="dv">2</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Sample correlation (Response Time vs Income): -0.3 </code></pre>
 </div>
@@ -3307,21 +3541,32 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <section id="regression-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="regression-analysis">6.2 Regression Analysis</h2>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb147"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiple regression model - PLACEHOLDER</span></span>
 <span id="cb147-2"><a href="#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Your team will implement the actual regression analysis</span></span>
 <span id="cb147-3"><a href="#cb147-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb147-4"><a href="#cb147-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"PLACEHOLDER: Multiple Regression Analysis</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>PLACEHOLDER: Multiple Regression Analysis</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb149"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"===========================================</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>===========================================</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb151"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Model: response_time ~ median_income + property_value + complaint_type + borough</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Model: response_time ~ median_income + property_value + complaint_type + borough</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb153"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create placeholder regression results table</span></span>
 <span id="cb153-2"><a href="#cb153-2" aria-hidden="true" tabindex="-1"></a>placeholder_results <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb153-3"><a href="#cb153-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">term =</span> <span class="fu">c</span>(<span class="st">"(Intercept)"</span>, <span class="st">"median_income"</span>, <span class="st">"median_property_value"</span>, </span>
@@ -3335,6 +3580,7 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 <span id="cb153-11"><a href="#cb153-11" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb153-12"><a href="#cb153-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb153-13"><a href="#cb153-13" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(placeholder_results, <span class="at">caption =</span> <span class="st">"PLACEHOLDER: Multiple Regression Results"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>PLACEHOLDER: Multiple Regression Results</caption>
@@ -3416,16 +3662,25 @@ $ median_income   &lt;dbl&gt; 106267.38, 145543.54, 119669.31, 161331.77, 56601.
 </tbody>
 </table>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb154"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">R-squared: 0.XXX (to be calculated)</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 R-squared: 0.XXX (to be calculated)</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb156"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Adjusted R-squared: 0.XXX (to be calculated)</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Adjusted R-squared: 0.XXX (to be calculated)</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb158"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"F-statistic: XXX on X and XXX DF, p-value: &lt; 0.001</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>F-statistic: XXX on X and XXX DF, p-value: &lt; 0.001</code></pre>
 </div>
@@ -3437,6 +3692,8 @@ R-squared: 0.XXX (to be calculated)</code></pre>
 <section id="summary-of-results" class="level2">
 <h2 class="anchored" data-anchor-id="summary-of-results">7.1 Summary of Results</h2>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb160"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create summary table of key findings</span></span>
 <span id="cb160-2"><a href="#cb160-2" aria-hidden="true" tabindex="-1"></a>key_findings <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb160-3"><a href="#cb160-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Research_Question =</span> <span class="fu">c</span>(</span>
@@ -3466,6 +3723,7 @@ R-squared: 0.XXX (to be calculated)</code></pre>
 <span id="cb160-27"><a href="#cb160-27" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb160-28"><a href="#cb160-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb160-29"><a href="#cb160-29" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(key_findings, <span class="at">caption =</span> <span class="st">"Summary of Key Research Findings"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Summary of Key Research Findings</caption>
@@ -3558,24 +3816,33 @@ R-squared: 0.XXX (to be calculated)</code></pre>
 <section id="a.1-additional-visualizations" class="level2">
 <h2 class="anchored" data-anchor-id="a.1-additional-visualizations">A.1 Additional Visualizations</h2>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb161"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Space for additional exploratory visualizations</span></span>
 <span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Interactive maps, detailed breakdowns, etc.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </section>
 <section id="a.2-detailed-statistical-output" class="level2">
 <h2 class="anchored" data-anchor-id="a.2-detailed-statistical-output">A.2 Detailed Statistical Output</h2>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb162"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Detailed statistical test results</span></span>
 <span id="cb162-2"><a href="#cb162-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Additional model diagnostics</span></span>
 <span id="cb162-3"><a href="#cb162-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Sensitivity analyses</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </section>
 <section id="a.3-data-processing-code" class="level2">
 <h2 class="anchored" data-anchor-id="a.3-data-processing-code">A.3 Data Processing Code</h2>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb163"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Detailed data cleaning steps</span></span>
 <span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="co"># API interaction code</span></span>
 <span id="cb163-3"><a href="#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Geographic processing functions</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 <hr>
 <p><em>This document was generated using Quarto. For questions about this analysis, please contact the project team.</em></p>
