@@ -574,85 +574,48 @@ The analysis reveals substantial geographic variation in 311 response times:
 
 **Question:** Is there a relationship between income levels and average 311 response times?
 
-## Analysis Approach
+## Motivation and Approach
 
-To test whether wealthier neighborhoods experience systematically faster service, we merged ZIP level 311 response data with Census median household income data and examined the correlation between income and response time.
+A common concern in discussions of public services is whether **wealthier neighborhoods receive faster attention** than lower-income areas. In the context of NYC’s **311 system**, this raises an important equity question: Are response times influenced by neighborhood income?
 
-```{r sarr-setup}
-# Prepare data with income
-nyc_zip <- nyc_311_clean %>%
-  group_by(zip_code = incident_zip) %>%
-  summarise(
-    avg_response = mean(response_time_days, na.rm = TRUE),
-    median_response = median(response_time_days, na.rm = TRUE),
-    n_complaints = n(),
-    .groups = "drop"
-  )
+To examine this question, I analyzed approximately **one million NYC 311 complaints** submitted between **January and April 2024**, focusing specifically on residential and neighborhood quality-of-life issues. The data were aggregated to the ZIP-code level, where I calculated the **average response time (in hours)** for each ZIP code. These ZIP-level response times were then linked to median household income using ACS ZIP/ZCTA-level income estimates.
 
-nyc_joined <- nyc_zip %>%
-  left_join(nyc_income, by = "zip_code") %>%
-  filter(!is.na(median_income))
+This approach enables a **broad, citywide comparison** of service response patterns across neighborhoods with very different income levels, helping to assess whether income is systematically related to how quickly 311 complaints are resolved.
 
-cat("Analysis Dataset:\n")
-cat("ZIP codes with income data:", nrow(nyc_joined), "\n")
-cat("Income range: $", comma(range(nyc_joined$median_income)), "\n")
-```
+## Findings
 
-## Scatterplot: Income vs Response Time
+The results show **no meaningful relationship** between neighborhood income and average 311 response time.
 
-```{r sarr-viz, fig.height=6}
-ggplot(nyc_joined, aes(x = median_income, y = avg_response)) +
-  geom_point(alpha = 0.6, color = "#0072B2") +
-  geom_smooth(method = "lm", se = TRUE, color = "red", linewidth = 1.1) +
-  labs(
-    title = "Relationship Between Median Household Income and 311 Response Times",
-    subtitle = "ZIP level comparison across NYC (Jan–Apr 2024)",
-    x = "Median Household Income (USD)",
-    y = "Average 311 Response Time (Days)"
-  ) +
-  scale_x_continuous(labels = dollar_format()) +
-  theme_minimal() +
-  theme(plot.title = element_text(face = "bold"))
-```
+When plotting ZIP-level median household income against average response time, the data form a wide, scattered cloud with no clear upward or downward pattern. The fitted trend line is nearly flat, indicating that income has **little explanatory power**. In practical terms, higher-income ZIP codes did not consistently receive faster responses, and lower-income ZIP codes did not consistently experience slower responses during this period.
 
-## Statistical Analysis
+An important observation is that response times vary substantially even among ZIP codes with similar income levels. Some neighborhoods exhibit unusually long or unusually short response times, but these cases appear to be isolated outliers rather than part of an income-driven pattern. Overall, the evidence suggests that **income alone does not explain differences in 311 response performance**.
 
-```{r sarr-correlation}
-cor_test <- cor.test(nyc_joined$median_income, nyc_joined$avg_response)
+## Key Findings
 
-cat("Correlation Analysis:\n")
-cat("Correlation coefficient:", round(cor_test$estimate, 4), "\n")
-cat("P-value:", format.pval(cor_test$p.value, digits = 3), "\n")
-cat("\nInterpretation:", 
-    ifelse(abs(cor_test$estimate) < 0.3, "Weak", 
-           ifelse(abs(cor_test$estimate) < 0.7, "Moderate", "Strong")), 
-    "correlation\n")
-```
+The analysis reveals a **very weak relationship** between neighborhood income and 311 response times:
 
-```{r sarr-regression}
-model <- lm(avg_response ~ median_income, data = nyc_joined)
-summary_table <- tidy(model)
+- The correlation between income and response time is small (approximately *r* ≈ −0.1 to −0.2), indicating minimal linear association.
+- Both low-income and high-income ZIP codes experience the full range of response times.
+- The regression line slopes slightly downward, suggesting marginally faster responses in wealthier areas, but the effect is extremely small.
+- **Income alone** explains less than 5% of the variation in response times (low R-squared).
+- The vertical spread of the data far exceeds any horizontal trend, reinforcing the lack of a meaningful relationship.
+rend
 
-kable(summary_table, 
-      caption = "Linear Regression: Response Time ~ Income",
-      digits = 4)
+![](311_response_plot.png){#fig-income-response width=85%}
 
-cat("\nR-squared:", round(summary(model)$r.squared, 4), "\n")
-cat("For every $10,000 increase in median income, response time changes by", 
-    round(coef(model)[2] * 10000, 3), "days\n")
-```
+**Figure 1.** Average 311 response time by ZIP code plotted against median household income.  
+Each point represents one ZIP code. The absence of a clear trend indicates that neighborhood income is not a strong predictor of response speed.
 
-## Key Findings (Hyacinthe)
+## Interpretation and Implications
 
-The analysis reveals a **weak relationship** between neighborhood income and 311 response times:
+These findings suggest that **income is not a primary driver** of how quickly 311 complaints are resolved across New York City. While public perception may assume that wealthier neighborhoods receive preferential treatment, the data do **not** support that conclusion for overall response times.
 
-- Correlation coefficient is small (r ≈ -0.1 to -0.2), indicating minimal linear association
-- Both low income and high income ZIP codes experience the full range of response times
-- The regression line slopes slightly downward, suggesting marginally faster responses in wealthier areas, but the effect is tiny
-- **Income alone explains less than 5% of variation** in response times (low R-squared)
-- Vertical dispersion of points far exceeds any horizontal trend
+Instead, other factors—such as **complaint type**, **borough-level operations**, **infrastructure complexity**, **staffing patterns**, and service prioritization rules are likely to play a much larger role in determining how quickly issues are addressed.
 
-**Conclusion:** Other factors such as complaint type, borough operations, infrastructure complexity, and resource allocation patterns likely play much larger roles than income in determining response times.
+For readers interested in methodological details, diagnostic checks, and additional analyses, my full individual report is available here:
+[Hyacinthe Sarr's Individual Report](https://actudata77.github.io/STA9750-2025-FALL/individual_report_sarr.html)
+
+Since overall 311 response times do not appear to vary by neighborhood income, the next natural question is whether this pattern holds across different types of complaints. The next section examines whether specific quality-of-life issues—such as noise, sanitation, or illegal parking—show different response patterns across wealth levels.
 
 # 6. Research Question 3: Complaint Type and Wealth
 
