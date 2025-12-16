@@ -518,6 +518,7 @@ For readers interested in methodological details, diagnostic checks, and additio
 
 Since overall 311 response times do not appear to vary by neighborhood income, the next natural question is whether this pattern holds across different types of complaints. The next section examines whether specific quality-of-life issues—such as noise, sanitation, or illegal parking—show different response patterns across wealth levels.
 
+
 # 6. Research Question 3: Complaint Type and Wealth
 
 **Researcher: Juan Jaimes**
@@ -526,7 +527,8 @@ Since overall 311 response times do not appear to vary by neighborhood income, t
 
 ## Analysis Approach
 
-To determine whether specific complaint categories are handled differently based on neighborhood wealth, we created wealth quintiles and compared response times across complaint types.
+To determine whether specific complaint categories are handled differently based on neighborhood wealth, I construct wealth quintiles and compare response times across major complaint types.
+To address this question, I integrate NYC 311 service request data—used to measure complaint resolution times by category—with neighborhood socioeconomic indicators derived from the American Community Survey (ACS). After aligning service requests to census geographies, I examine response-time patterns in wealthier versus less wealthy neighborhoods across key complaint categories. Beyond descriptive comparisons of means, medians, and distributions, I apply resampling-based inference (bootstrap methods) to assess whether observed differences reflect systematic patterns rather than random variation. Finally, I identify the complaint categories with the largest wealth-related gaps and relate these findings to the team’s broader analysis of service equity across NYC.
 
 ```{r juan-setup}
 # Create wealth categories
@@ -622,14 +624,22 @@ ggplot(gap_data, aes(x = complaint_category, y = gap, group = 1)) +
 
 ## Key Findings (Juan)
 
+
 The analysis provides evidence of disparities in complaint resolution by neighborhood wealth:
 
-- **All complaint categories** show longer average response times in less wealthy neighborhoods
-- **Sanitation and "Other" complaints** show the largest gaps between wealthy and less wealthy areas
-- The pattern is consistent across different complaint types, suggesting a systematic difference
-- No complaint category shows faster service in less wealthy neighborhoods
+The analysis reveals a consistent association between neighborhood wealth and the speed of 311 complaint resolution across all complaint categories examined. On average, complaints originating in less wealthy neighborhoods take longer to be resolved than those in wealthier areas, regardless of complaint type. This pattern holds for Noise, Parking, Sanitation, and Other complaints, indicating that differences in response times are systematic rather than the result of isolated or random cases.
 
-**Interpretation:** Quality-of-life complaints are resolved more quickly in wealthier neighborhoods across all categories studied. The magnitude varies by complaint type, with some services showing larger wealth based disparities than others.
+The magnitude of these differences varies across complaint categories. In particular, Sanitation and Other complaints exhibit the largest gaps in average resolution time between wealthier and less wealthy neighborhoods. These categories appear to be especially sensitive to socioeconomic context, suggesting that disparities in municipal service delivery may be more pronounced for certain types of quality-of-life issues.
+
+An examination of the full distribution of response times further reinforces these findings. For every complaint category, the median response time is higher in less wealthy neighborhoods. In addition, response times in these areas show greater variability and more extreme delays, indicating that slower resolution is not driven solely by a small number of outliers. Instead, the disparity is visible across most of the distribution, affecting the typical experience of residents in lower-income neighborhoods.
+
+The gap analysis, defined as the difference in average resolution time between less wealthy and wealthy neighborhoods, provides a direct measure of inequality in service delivery. All estimated gaps are positive, meaning that less wealthy neighborhoods consistently experience slower complaint resolution across all categories. No complaint type shows evidence of faster resolution in less wealthy areas, further underscoring the pervasive nature of the disparity.
+
+Taken together, these results provide strong evidence that neighborhood wealth is meaningfully associated with 311 response times. Not only do wealthier neighborhoods receive faster service on average, but the advantage persists across the distribution of response times and across all complaint categories considered. These findings directly support the conclusion that certain types of quality-of-life complaints are resolved more quickly in wealthier neighborhoods, with particularly large disparities observed in sanitation-related and miscellaneous service requests.
+
+
+
+
 
 # 7. Research Question 4: Borough Level Disparities
 
