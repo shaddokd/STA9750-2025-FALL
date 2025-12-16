@@ -438,126 +438,27 @@ ggplot(borough_resolution, aes(x = reorder(borough, avg_resolution_days), y = av
 
 To understand geographic variation in 311 service delivery, we aggregated complaint data to the ZIP code level and calculated key response metrics including mean, median, and quartile response times.
 
-```{r reem-setup}
-# Clean ZIP codes and prepare data
-nyc_311_clean <- df_311_clean %>%
-  mutate(incident_zip = str_extract(incident_zip, "\\d{5}")) %>%
-  filter(!is.na(incident_zip))
+To answer this question, I looked at the average response time to quality-of-life 311 complaints across NYC neighborhoods, using ZIP codes as a proxy for neighborhoods. ZIP codes allowed for consistent geographic comparisons while still capturing local variation in service response times. The analysis focuses on complaints submitted in the first four months of 2024.
 
-# Calculate ZIP level response metrics
-response_by_zip <- nyc_311_clean %>%
-  mutate(response_time_hours = response_time_days * 24) %>%
-  group_by(incident_zip, borough) %>%
-  summarize(
-    n_complaints = n(),
-    mean_response_days = mean(response_time_days, na.rm = TRUE),
-    mean_response_hours = mean(response_time_hours, na.rm = TRUE),
-    sd_response_days = sd(response_time_days, na.rm = TRUE),
-    p25_days = quantile(response_time_days, 0.25, na.rm = TRUE),
-    p75_days = quantile(response_time_days, 0.75, na.rm = TRUE),
-    .groups = "drop"
-  ) %>%
-  arrange(desc(mean_response_days))
+For each ZIP code, I calculated the mean response time in days or hours, along with the total number of complaints received. I then summarized these results at the borough level to better understand broader geographic patterns and how neighborhoods compare within and across boroughs.
 
-cat("ZIP Code Analysis Summary:\n")
-cat("Total ZIP codes:", nrow(response_by_zip), "\n")
-cat("Response time range:", 
-    round(range(response_by_zip$mean_response_days), 2), "days\n")
-```
+Overall, the results show that 311 response times vary noticeably across ZIP codes. Some ZIP codes experience much longer average response times than others, and this pattern is not limited to any single borough. Even within the same borough, neighborhoods can have very different response times, suggesting that service responsiveness is not evenly distributed.
 
-## Top 10 Slowest ZIP Codes
+See below for top 10 slowest zip codes showing the Bronx as having the slowest response time.
+![Top 10 Slowest Zip Codes](images/top_10_slowest.png)
 
-```{r reem-slowest}
-datatable(
-  response_by_zip %>%
-    slice_max(mean_response_days, n = 10) %>%
-    select(incident_zip, borough, n_complaints, mean_response_days),
-  caption = "Top 10 Slowest ZIP Codes by Mean Response Time",
-  colnames = c("ZIP", "Borough", "# Complaints", "Mean Days"),
-  options = list(pageLength = 10, dom = 't'),
-  rownames = FALSE
-) %>%
-  formatRound("mean_response_days", 2) %>%
-  formatCurrency("n_complaints", "", 0, ",")
-```
+See below for top 10 fastest zip codes showing Manhattan dominating this list. 
+![Top 10 Fastest Zip Codes](images/top_10_fastest.png)
 
-## Top 10 Fastest ZIP Codes
+When looking at borough-level averages, differences between boroughs are present but more modest compared to the variation seen at the ZIP code level. This indicates that neighborhood-level factors play an important role in shaping response times beyond just borough-wide trends.
 
-```{r reem-fastest}
-datatable(
-  response_by_zip %>%
-    slice_min(mean_response_days, n = 10) %>%
-    mutate(mean_response_hours = round(mean_response_hours, 2)) %>%
-    select(incident_zip, borough, n_complaints, mean_response_hours),
-  caption = "Top 10 Fastest ZIP Codes by Mean Response Time",
-  colnames = c("ZIP", "Borough", "# Complaints", "Mean Hours"),
-  options = list(pageLength = 10, dom = 't'),
-  rownames = FALSE
-) %>%
-  formatRound("mean_response_hours", 2) %>%
-  formatCurrency("n_complaints", "", 0, ",")
-```
+See below for average response time by borough showing the Bronx as having the highest response time out of the rest of the boroughs.
+![Average Response Time By Borough](images/average_response_time_by_borough.png)
 
-## Borough-Level Summary
+One important limitation of this analysis is that Zip Codes with very low numbers of complaints sometimes appear among both the fastest and slowest responders. Because averages are more sensitive when complaint counts are small, these cases should be interpreted cautiously. However, they still highlight how uneven response times can be across the city.
 
-```{r reem-borough-summary}
-response_by_borough <- response_by_zip %>%
-  group_by(borough) %>%
-  summarize(
-    n_zips = n(),
-    total_complaints = sum(n_complaints),
-    avg_mean_days = mean(mean_response_days, na.rm = TRUE),
-    min_days = min(mean_response_days, na.rm = TRUE),
-    max_days = max(mean_response_days, na.rm = TRUE),
-    .groups = "drop"
-  )
+Overall, this analysis shows that residents’ experiences with 311 services can differ significantly depending on their neighborhood. These findings help establish a geographic baseline for understanding service disparities and contribute directly to the project’s overarching question about equity in NYC’s 311 service delivery.
 
-datatable(
-  response_by_borough,
-  caption = "Response Time Summary by Borough",
-  colnames = c("Borough", "# ZIP Codes", "Total Complaints", "Avg Mean Days", "Min Days", "Max Days"),
-  options = list(pageLength = 10),
-  rownames = FALSE
-) %>%
-  formatRound(c("avg_mean_days", "min_days", "max_days"), 2) %>%
-  formatCurrency(c("n_zips", "total_complaints"), "", 0, ",")
-```
-
-## Visualizations
-
-```{r reem-viz-1}
-response_by_zip %>%
-  filter(n_complaints >= 30) %>%
-  arrange(mean_response_days) %>%
-  head(20) %>%
-  ggplot(aes(x = reorder(incident_zip, mean_response_days), y = mean_response_days, fill = borough)) +
-  geom_col() +
-  coord_flip() +
-  labs(
-    title = "20 Fastest ZIP Codes by Average Response Time",
-    subtitle = "ZIP codes with 30+ complaints",
-    x = "ZIP Code",
-    y = "Average Response Time (days)",
-    fill = "Borough"
-  ) +
-  scale_fill_brewer(palette = "Set2") +
-  theme_minimal() +
-  theme(plot.title = element_text(face = "bold"))
-```
-
-```{r reem-viz-2}
-ggplot(response_by_borough, aes(x = reorder(borough, avg_mean_days), y = avg_mean_days, fill = borough)) +
-  geom_col() +
-  coord_flip() +
-  labs(
-    title = "Average Response Time by Borough",
-    x = "Borough",
-    y = "Average Response Time (days)"
-  ) +
-  scale_fill_brewer(palette = "Set2") +
-  theme_minimal() +
-  theme(legend.position = "none", plot.title = element_text(face = "bold"))
-```
 
 ## Key Findings (Reem)
 
