@@ -141,11 +141,6 @@ The analysis reveals a **very weak relationship** between neighborhood income an
 - The vertical spread of the data far exceeds any horizontal trend, reinforcing the lack of a meaningful relationship.
 rend
 
-![](311_response_plot.png){#fig-income-response width=85%}
-
-**Figure 1.** Average 311 response time by ZIP code plotted against median household income.  
-Each point represents one ZIP code. The absence of a clear trend indicates that neighborhood income is not a strong predictor of response speed.
-
 ## Interpretation and Implications
 
 These findings suggest that **income is not a primary driver** of how quickly 311 complaints are resolved across New York City. While public perception may assume that wealthier neighborhoods receive preferential treatment, the data do **not** support that conclusion for overall response times.
@@ -245,6 +240,9 @@ The first attempt used over one million complaints from the first four months of
 The breakthrough came with a third pivot to a different dataset: the 311 resolution satisfaction survey covering 2022-2025 with approximately 436,000 responses. This dataset included customer satisfaction ratings ranging from "strongly disagree" to "strongly agree," along with detailed complaint information. The final model had a 45% accuracy which was better than before, but was still far from perfect. Analysis revealed that the most important predictive features were the complaint descriptor and complaint type, suggesting certain neighborhoods have distinct complaint patterns. Generic information like month or year provided little predictive value. The model performed best on Brooklyn complaints, correctly identifying them 62% of the time in test cases, most likely because Brooklyn filed nearly twice as many complaints as other boroughs, giving the model more examples to learn from. 
 
 While 45% accuracy isn't exactly groundbreaking, it shows that boroughs do have distinguishable complaint patterns. The project highlighted important lessons about machine learning limitations: model performance depends heavily on having descriptive, detailed features rather than just large volumes of data. Future improvements could include joining multiple datasets to get richer complaint details, implementing cross-validation techniques for better performance assessment, and conducting systematic parameter optimization rather than using default settings. But ultimately, it all depends on the datasets used. Like the popular saying goes, garbage in garbage out.
+
+The figure below shows the most important features in the final model:
+![Most useful features](images/featureimportance.png)
 
 # Conclusion: Assessing Equity in NYC 311 Service Delivery
 
