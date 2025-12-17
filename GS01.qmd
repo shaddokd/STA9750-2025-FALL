@@ -890,20 +890,10 @@ ggplot(top_complaints_by_borough,
 ```
 
 ## Key Findings (Shahria)
-
-**Model Accuracy:** The Random Forest classifier achieved **45.26% accuracy**, well above the 20% baseline of random guessing, indicating that complaint characteristics do carry geographic signatures.
-
-**Most Important Features:**
-1. **Descriptor** – Most predictive feature
-2. **Complaint Type** – Second most important
-3. **Agency** and **Dissatisfaction Reason** – Moderate importance
-
-**Geographic Patterns:**
-- Brooklyn and Queens are dominated by **illegal parking** complaints
-- Manhattan shows more **noise** and **building-related** complaints
-- Different boroughs face systematically different types of problems
-
-**Implications:** The model's ability to predict borough suggests that resource allocation should be tailored to local complaint patterns rather than using a one size fits all approach.
+  This section explored whether machine learning could predict which New York City borough a 311 complaint originated from based on complaint characteristics. This started with a simple question: if we could accurately predict the borough, we could estimate resolution times since each borough has different average response speeds. The approach used a Random Forest classifier, a machine learning algorithm that works like a voting committee, by creating many questions and taking the most popular answer. The model went through three iterations and pivots before finding some success. 
+  The first attempt used over one million complaints from the first four months of 2024, training the model on features like complaint type, responding agency, submission channel, time of day, and whether it was a weekend. This initial model achieved only 38% accuracy, which wasn't reliable enough for practical use. Stratifying and expanding the dataset to include 100,000 complaints from each month of 2024 barely improved performance to 39%, revealing that just adding more data wasn't the solution. 
+  The breakthrough came with a third pivot to a different dataset: the 311 resolution satisfaction survey covering 2022-2025 with approximately 436,000 responses. This dataset included customer satisfaction ratings ranging from "strongly disagree" to "strongly agree," along with detailed complaint information. The final model had a 45% accuracy which was better than before, but was still far from perfect. Analysis revealed that the most important predictive features were the complaint descriptor and complaint type, suggesting certain neighborhoods have distinct complaint patterns. Generic information like month or year provided little predictive value. The model performed best on Brooklyn complaints, correctly identifying them 62% of the time in test cases, most likely because Brooklyn filed nearly twice as many complaints as other boroughs, giving the model more examples to learn from. 
+  While 45% accuracy isn't exactly groundbreaking, it shows that boroughs do have distinguishable complaint patterns. The project highlighted important lessons about machine learning limitations: model performance depends heavily on having descriptive, detailed features rather than just large volumes of data. Future improvements could include joining multiple datasets to get richer complaint details, implementing cross-validation techniques for better performance assessment, and conducting systematic parameter optimization rather than using default settings. But ultimately, it all depends on the datasets used. Like the popular saying goes, garbage in garbage out.
 
 # 9. Synthesis and Conclusions
 
