@@ -66,7 +66,7 @@ Understanding disparities in 311 service delivery is crucial for:
 
 Rather than treating service equity as a single outcome, we examine it through five related research questions:
 
-1. **Geographic patterns** – What is the average response time by neighborhood? [View Reem's individual report here]
+1. **Geographic patterns** – What is the average response time by neighborhood? [View Reem's individual report here] (https://reemhussein1.github.io/STA9750-2025-FALL/individual-report.html)
 2. **Income relationship** – Is there a relationship between income levels and response times? [View Sarr's individual report here](https://actudata77.github.io/STA9750-2025-FALL/individual_report_sarr.html)
 3. **Complaint types** – Do certain complaints get resolved faster in wealthier neighborhoods? (https://juandavidjaimes990.github.io/STA9750-2025-FALL/GI01.html)
 4. **Borough disparities** – Which boroughs show the greatest disparities by wealth? [View Kyle's individual report here](https://shaddokd.github.io/STA9750-2025-FALL/GI01.html)
