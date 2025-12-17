@@ -68,7 +68,7 @@ Rather than treating service equity as a single outcome, we examine it through f
 
 1. **Geographic patterns** – What is the average response time by neighborhood? [View Reem's individual report here]
 2. **Income relationship** – Is there a relationship between income levels and response times? [View Sarr's individual report here](https://actudata77.github.io/STA9750-2025-FALL/individual_report_sarr.html)
-3. **Complaint types** – Do certain complaints get resolved faster in wealthier neighborhoods? [View Juan's individual report here]
+3. **Complaint types** – Do certain complaints get resolved faster in wealthier neighborhoods? (https://juandavidjaimes990.github.io/STA9750-2025-FALL/GI01.html)
 4. **Borough disparities** – Which boroughs show the greatest disparities by wealth? [View Kyle's individual report here](https://shaddokd.github.io/STA9750-2025-FALL/GI01.html)
 5. **Predictive modeling** – Can we predict complaint origin from characteristics? [View Shahria's individual report here](https://shahriaahmed.github.io/STA9750-2025-FALL/finalproject.html)
 
@@ -176,6 +176,9 @@ An examination of the full distribution of response times further reinforces the
 The gap analysis, defined as the difference in average resolution time between less wealthy and wealthy neighborhoods, provides a direct measure of inequality in service delivery. All estimated gaps are positive, meaning that less wealthy neighborhoods consistently experience slower complaint resolution across all categories. No complaint type shows evidence of faster resolution in less wealthy areas, further underscoring the pervasive nature of the disparity.
 
 Taken together, these results provide strong evidence that neighborhood wealth is meaningfully associated with 311 response times. Not only do wealthier neighborhoods receive faster service on average, but the advantage persists across the distribution of response times and across all complaint categories considered. These findings directly support the conclusion that certain types of quality-of-life complaints are resolved more quickly in wealthier neighborhoods, with particularly large disparities observed in sanitation-related and miscellaneous service requests.
+
+Additional methodological discussion, diagnostic validation, and extended analyses are documented in my full individual report, available here:
+[Juan Jaimes Individual Report]https://juandavidjaimes990.github.io/STA9750-2025-FALL/GI01.html
 
 
 
