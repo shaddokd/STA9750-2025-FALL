@@ -45,14 +45,14 @@ The article also notes that a prior study from NYU (2017) found that neighborhoo
 
 Rather than treating service equity as a single outcome, we examine it through five related research questions:
 
-1. **Geographic patterns** – What is the average response time by neighborhood? [View Reem's individual report here] (https://reemhussein1.github.io/STA9750-2025-FALL/individual-report.html)
+1. **Geographic patterns** – What is the average response time by neighborhood? [View Reem's individual report here](https://reemhussein1.github.io/STA9750-2025-FALL/individual-report.html)
 2. **Income relationship** – Is there a relationship between income levels and response times? [View Sarr's individual report here](https://actudata77.github.io/STA9750-2025-FALL/individual_report_sarr.html)
 3. **Complaint types** – Do certain complaints get resolved faster in wealthier neighborhoods? [View Juan's individual report here](https://juandavidjaimes990.github.io/STA9750-2025-FALL/GI01.html)
 4. **Borough disparities** – Which boroughs show the greatest disparities by wealth? [View Kyle's individual report here](https://shaddokd.github.io/STA9750-2025-FALL/GI01.html)
 5. **Predictive modeling** – Can we predict complaint origin from characteristics? [View Shahria's individual report here](https://shahriaahmed.github.io/STA9750-2025-FALL/finalproject.html)
 
 
-### Geographic Patterns in Response Times
+# Geographic Patterns in Response Times
 
 **Researcher: Reem Hussein**
 
@@ -82,7 +82,7 @@ One important limitation of this analysis is that Zip Codes with very low number
 Overall, this analysis shows that residents’ experiences with 311 services can differ significantly depending on their neighborhood. These findings help establish a geographic baseline for understanding service disparities and contribute directly to the project’s overarching question about equity in NYC’s 311 service delivery.
 
 
-## Key Findings 
+### Key Findings 
 
 The analysis reveals substantial geographic variation in 311 response times:
 
@@ -109,7 +109,7 @@ When plotting ZIP-level median household income against average response time, t
 
 An important observation is that response times vary substantially even among ZIP codes with similar income levels. Some neighborhoods exhibit unusually long or unusually short response times, but these cases appear to be isolated outliers rather than part of an income-driven pattern. Overall, the evidence suggests that **income alone does not explain differences in 311 response performance**.
 
-## Key Findings
+### Key Findings 
 
 The analysis reveals a **very weak relationship** between neighborhood income and 311 response times:
 
@@ -120,7 +120,7 @@ The analysis reveals a **very weak relationship** between neighborhood income an
 - The vertical spread of the data far exceeds any horizontal trend, reinforcing the lack of a meaningful relationship.
 rend
 
-## Interpretation and Implications
+### Interpretation and Implications
 
 These findings suggest that **income is not a primary driver** of how quickly 311 complaints are resolved across New York City. While public perception may assume that wealthier neighborhoods receive preferential treatment, the data do **not** support that conclusion for overall response times.
 
@@ -143,7 +143,7 @@ To determine whether complaint categories are handled differently based on neigh
 I integrate NYC 311 service request data with neighborhood income indicators from the American Community Survey. After aligning service requests to census geographies, I examine response-time patterns in wealthier versus less wealthy neighborhoods. Beyond comparing means and medians, I apply bootstrap methods to assess whether observed differences reflect systematic patterns rather than random variation. Finally, I identify complaint categories with the largest wealth-related gaps.
 
 
-## Key Findings 
+### Key Findings 
 
 The analysis provides evidence of disparities in complaint resolution by neighborhood wealth:
 
@@ -170,7 +170,7 @@ Additional methodological discussion, diagnostic validation, and extended analys
 
 This section presents key findings from Kyle's analysis. For the complete analysis with detailed methodology, bootstrap statistical inference, and interactive maps that let you explore patterns by borough and complaint type, see [Kyle's full individual report](https://shaddokd.github.io/STA9750-2025-FALL/GI01.html).
 
-## Analysis Approach and Methodology
+### Analysis Approach and Methodology
 
 Kyle employed a comprehensive analytical strategy combining spatial analysis, bootstrap statistical inference, and interactive visualization to examine borough level disparities. The methodology included several distinct components:
 
@@ -194,7 +194,7 @@ Each of the five boroughs received individual examination to identify [which are
 
 To enable deeper exploration of the findings, Kyle created an [interactive dashboard with filterable maps and detailed statistical tables](https://shaddokd.github.io/STA9750-2025-FALL/GI01.html#interactive-dashboard) that allow users to examine specific neighborhoods, time periods, and complaint types. The dashboard includes a color coded map showing response times across census tracts and comprehensive breakdowns by borough and income quartile.
 
-## Key Findings
+### Key Findings
 
 The analysis reveals substantial variation in how income relates to service delivery across different parts of New York City:
 
