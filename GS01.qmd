@@ -7,7 +7,7 @@ author:
   - "Hyacinthe Sarr"
   - "Juan Jaimes"
   - "Shahria Ahmed"
-date: "`r Sys.Date()`"
+date: `r Sys.Date()`
 format:
   html:
     toc: true
@@ -23,7 +23,7 @@ execute:
   echo: true
 ---
 
-# 1. Introduction and Motivation
+# Introduction and Motivation
 
 ## Problem Statement
 
@@ -122,12 +122,9 @@ rend
 
 ### Interpretation and Implications
 
-These findings suggest that **income is not a primary driver** of how quickly 311 complaints are resolved across New York City. While public perception may assume that wealthier neighborhoods receive preferential treatment, the data do **not** support that conclusion for overall response times.
+These findings suggest that **income is not a primary driver** of how quickly 311 complaints are resolved across New York City. While public perception may assume that wealthier neighborhoods receive preferential treatment, the data does **not** support that conclusion for overall response times.
 
 Instead, other factors such as **complaint type**, **borough-level operations**, **infrastructure complexity**, **staffing patterns**, and service prioritization rules are likely to play a much larger role in determining how quickly issues are addressed.
-
-For readers interested in methodological details, diagnostic checks, and additional analyses, my full individual report is available here:
-[Hyacinthe Sarr's Individual Report](https://actudata77.github.io/STA9750-2025-FALL/individual_report_sarr.html)
 
 Since overall 311 response times do not appear to vary by neighborhood income, the next natural question is whether this pattern holds across different types of complaints. The next section examines whether specific quality-of-life issues—such as noise, sanitation, or illegal parking—show different response patterns across wealth levels.
 
@@ -157,20 +154,12 @@ The gap analysis, the difference in average resolution time between less wealthy
 
 These results provide strong evidence that neighborhood wealth is meaningfully associated with 311 response times. Wealthier neighborhoods receive faster service on average, and this advantage persists across the distribution of response times and all complaint categories. The findings support the conclusion that certain quality-of-life complaints are resolved more quickly in wealthier neighborhoods, with particularly large disparities in sanitation-related and miscellaneous service requests.
 
-Additional methodological discussion, diagnostic validation, and extended analyses are documented in my full individual report, available here:
-[Juan Jaimes Individual Report]https://juandavidjaimes990.github.io/STA9750-2025-FALL/GI01.html
-
-
 
 # Borough Level Disparities
 
 **Researcher: Kyle Shaddox**
 
 **Question:** Which boroughs or neighborhoods show the greatest disparities in 311 response times when compared by wealth?
-
-This section presents key findings from Kyle's analysis. For the complete analysis with detailed methodology, bootstrap statistical inference, and interactive maps that let you explore patterns by borough and complaint type, see [Kyle's full individual report](https://shaddokd.github.io/STA9750-2025-FALL/GI01.html).
-
-### Analysis Approach and Methodology
 
 Kyle employed a comprehensive analytical strategy combining spatial analysis, bootstrap statistical inference, and interactive visualization to examine borough level disparities. The methodology included several distinct components:
 
@@ -192,23 +181,21 @@ Each of the five boroughs received individual examination to identify [which are
 
 **Interactive Dashboard**
 
-To enable deeper exploration of the findings, Kyle created an [interactive dashboard with filterable maps and detailed statistical tables](https://shaddokd.github.io/STA9750-2025-FALL/GI01.html#interactive-dashboard) that allow users to examine specific neighborhoods, time periods, and complaint types. The dashboard includes a color coded map showing response times across census tracts and comprehensive breakdowns by borough and income quartile.
+To enable deeper exploration of the findings, Kyle created an [interactive dashboard with filterable maps and detailed statistical tables](https://shaddokd.github.io/STA9750-2025-FALL/GI01.html#interactive-dashboard) that allow users to examine specific neighborhoods, time periods, and complaint types. 
 
 ### Key Findings
 
 The analysis reveals substantial variation in how income relates to service delivery across different parts of New York City:
 
-**Largest Disparities:** Brooklyn shows the most pronounced income based disparity, with low wealth neighborhoods waiting 86% longer than high wealth neighborhoods. Queens shows the second largest gap. These findings emerged from comparing median response times across income quartiles within each borough.
+**Largest Disparities:** Brooklyn shows the most pronounced gap, with low-income neighborhoods waiting 86% longer than wealthy ones. Queens has the second largest gap.
 
-**Smallest Disparities:** Staten Island shows the smallest gap and actually exhibits a reverse pattern, with wealthier neighborhoods experiencing slightly longer wait times. This unexpected finding suggests that borough level administrative practices and resource allocation vary significantly across the city.
+**Smallest Disparities:** Staten Island shows the smallest gap and actually reverses the pattern—wealthier neighborhoods wait slightly longer. This suggests borough-level practices and resource allocation vary significantly across the city.
 
-**Statistical Significance:** Bootstrap confidence intervals and traditional statistical tests confirm significant differences in Brooklyn, Queens, and Manhattan. The Bronx shows modest differences that, while present, are less pronounced than in Brooklyn.
+**Statistical Significance:** Bootstrap tests confirm significant differences in Brooklyn, Queens, and Manhattan. The Bronx shows modest but less pronounced differences.
 
-**Complaint Type Patterns:** The [detailed breakdown by complaint type](https://shaddokd.github.io/STA9750-2025-FALL/GI01.html#looking-at-different-types-of-complaints) shows that quality of life issues like noise and parking complaints exhibit larger disparities than emergency repairs. Heat and hot water complaints, which affect habitability, show smaller income based gaps, suggesting the city prioritizes these issues more equally.
+**Complaint Type Patterns:**  The [detailed breakdown by complaint type](https://shaddokd.github.io/STA9750-2025-FALL/GI01.html#looking-at-different-types-of-complaints) shows that quality-of-life issues like noise and parking have larger disparities than emergency repairs. Heat and hot water complaints show smaller income-based gaps, suggesting the city prioritizes habitability issues more equally.
 
-**Neighborhood Outliers:** Specific census tracts show response times that deviate substantially from predictions based on income alone, suggesting localized operational issues that warrant targeted investigation.
-
-For detailed statistical tests, regression models, complete data tables, and interactive visualizations that let you explore these patterns yourself, see [Kyle's complete analysis](https://shaddokd.github.io/STA9750-2025-FALL/GI01.html).
+**Neighborhood Outliers:** Some census tracts show response times that deviate substantially from income-based predictions, pointing to localized operational issues worth investigating.
 
 # Predictive Modeling
 
@@ -259,4 +246,3 @@ Addressing these geographical and complaint-type specific vulnerabilities allows
 
 4. Governing. 311 Study. https://www.governing.com/archive/gov-311-study.html
 
-*Document generated using Quarto on `r Sys.Date()`*
