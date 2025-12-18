@@ -7,7 +7,7 @@ author:
   - "Hyacinthe Sarr"
   - "Juan Jaimes"
   - "Shahria Ahmed"
-date: `r Sys.Date()`
+date: 'r Sys.Date()'
 format:
   html:
     toc: true
