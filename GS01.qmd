@@ -23,42 +23,21 @@ execute:
   echo: true
 ---
 
-
-# Executive Summary
-
-**Research Question:** Does NYC provide faster and more effective 311 service responses to wealthier neighborhoods compared to lower income communities?
-
-**Key Findings:**
-
-New York City's 311 system serves as the primary channel for residents to report nonemergency quality of life issues. This comprehensive analysis of over one million service requests from 2024 reveals that the relationship between neighborhood wealth and service delivery is more nuanced than a simple narrative of discrimination would suggest.
-
-The results challenge straightforward assumptions about wealth based favoritism. While response times vary widely across the city, neighborhood income alone explains very little of that variation. However, important disparities emerge at the borough level and within specific neighborhoods, suggesting that service inequities are driven more by geographic, administrative, and complaint type factors than by income alone.
-
-**Major Conclusions:**
-
-1. **Geographic variation is large; income effects are small** – Response times vary substantially city wide, but income is a weak predictor
-2. **Complaint type matters more than income** – Different neighborhoods face different types of problems
-3. **Borough-level disparities are uneven** – Brooklyn shows the largest income based gaps; Staten Island shows a reverse pattern
-4. **Machine learning reveals geographic complaint signatures** – Complaint characteristics predict borough with 45% accuracy
-
 # 1. Introduction and Motivation
 
 ## Problem Statement
 
-The 311 system serves as New York City's primary nonemergency service request platform, handling millions of complaints annually ranging from noise violations to sanitation issues. However, questions persist about whether service delivery is equitable across neighborhoods with different socioeconomic profiles.
-
-For many quality of life concerns—from heating outages to illegal parking—311 is the first and often only point of contact with the city. The speed and effectiveness of these responses can shape daily life, neighborhood safety, and trust in government.
+The 311 system is New York City's primary nonemergency service platform, handling millions of complaints annually. For many quality of life concerns, from heating outages to illegal parking, 311 is often the only point of contact with the city, making response times critical to daily life and trust in government.
 
 ## Research Significance
 
-Equitable service delivery is not only a question of fairness. Uneven responsiveness can reinforce broader inequalities by affecting public health, housing conditions, and property values. If some neighborhoods consistently wait longer for basic services, residents may experience compounding disadvantages over time.
+Uneven service delivery can reinforce broader inequalities by affecting public health, housing conditions, and property values. Understanding these disparities is important for ensuring equitable municipal services, improving resource allocation, and informing policy decisions about urban service delivery and social justice.
 
-Understanding disparities in 311 service delivery is crucial for:
+## Prior Research
 
-- Ensuring equitable municipal service provision
-- Identifying areas needing improved resource allocation
-- Informing policy decisions about urban service delivery
-- Promoting environmental and social justice
+The question of whether 311 responds with equal speed and effectiveness across diverse neighborhoods has already been explored. In [“Is 311 Fair?”](https://www.governing.com/archive/gov-311-study.html), Governing reports on a study of over six million 311 calls across seven major U.S. cities, finding that a 1 percent increase in neighborhood income corresponded to only a 0.16-day decrease in resolution time. The authors suggest that contrary to popular belief, many cities appear to provide broadly comparable service times regardless of wealth.
+
+The article also notes that a prior study from NYU (2017) found that neighborhoods with higher income, more renters, or white/Asian populations tend to use 311 more often, meaning usage bias could affect perception of service equity. The article also mentions that neighborhoods with higher proportions of unmarried, minority and unemployed residents tend to underreport problems. Our project narrows the focus to New York City, uses 311 data from 2024, and classifies complaint types (ex: noise, sanitation, illegal parking, etc.…)
 
 ## Overarching Question
 
@@ -68,7 +47,7 @@ Rather than treating service equity as a single outcome, we examine it through f
 
 1. **Geographic patterns** – What is the average response time by neighborhood? [View Reem's individual report here] (https://reemhussein1.github.io/STA9750-2025-FALL/individual-report.html)
 2. **Income relationship** – Is there a relationship between income levels and response times? [View Sarr's individual report here](https://actudata77.github.io/STA9750-2025-FALL/individual_report_sarr.html)
-3. **Complaint types** – Do certain complaints get resolved faster in wealthier neighborhoods? (https://juandavidjaimes990.github.io/STA9750-2025-FALL/GI01.html)
+3. **Complaint types** – Do certain complaints get resolved faster in wealthier neighborhoods? [View Juan's individual report here](https://juandavidjaimes990.github.io/STA9750-2025-FALL/GI01.html)
 4. **Borough disparities** – Which boroughs show the greatest disparities by wealth? [View Kyle's individual report here](https://shaddokd.github.io/STA9750-2025-FALL/GI01.html)
 5. **Predictive modeling** – Can we predict complaint origin from characteristics? [View Shahria's individual report here](https://shahriaahmed.github.io/STA9750-2025-FALL/finalproject.html)
 
@@ -145,7 +124,7 @@ rend
 
 These findings suggest that **income is not a primary driver** of how quickly 311 complaints are resolved across New York City. While public perception may assume that wealthier neighborhoods receive preferential treatment, the data do **not** support that conclusion for overall response times.
 
-Instead, other factors—such as **complaint type**, **borough-level operations**, **infrastructure complexity**, **staffing patterns**, and service prioritization rules are likely to play a much larger role in determining how quickly issues are addressed.
+Instead, other factors such as **complaint type**, **borough-level operations**, **infrastructure complexity**, **staffing patterns**, and service prioritization rules are likely to play a much larger role in determining how quickly issues are addressed.
 
 For readers interested in methodological details, diagnostic checks, and additional analyses, my full individual report is available here:
 [Hyacinthe Sarr's Individual Report](https://actudata77.github.io/STA9750-2025-FALL/individual_report_sarr.html)
@@ -159,23 +138,24 @@ Since overall 311 response times do not appear to vary by neighborhood income, t
 
 **Question:** Do certain types of quality of life complaints get resolved faster in wealthier neighborhoods?
 
-To determine whether specific complaint categories are handled differently based on neighborhood wealth, I construct wealth quintiles and compare response times across major complaint types.
-To address this question, I integrate NYC 311 service request data—used to measure complaint resolution times by category—with neighborhood socioeconomic indicators derived from the American Community Survey (ACS). After aligning service requests to census geographies, I examine response-time patterns in wealthier versus less wealthy neighborhoods across key complaint categories. Beyond descriptive comparisons of means, medians, and distributions, I apply resampling-based inference (bootstrap methods) to assess whether observed differences reflect systematic patterns rather than random variation. Finally, I identify the complaint categories with the largest wealth-related gaps and relate these findings to the team’s broader analysis of service equity across NYC.
+To determine whether complaint categories are handled differently based on neighborhood wealth, I construct wealth quintiles and compare response times across major complaint types.
+
+I integrate NYC 311 service request data with neighborhood income indicators from the American Community Survey. After aligning service requests to census geographies, I examine response-time patterns in wealthier versus less wealthy neighborhoods. Beyond comparing means and medians, I apply bootstrap methods to assess whether observed differences reflect systematic patterns rather than random variation. Finally, I identify complaint categories with the largest wealth-related gaps.
 
 
 ## Key Findings 
 
 The analysis provides evidence of disparities in complaint resolution by neighborhood wealth:
 
-The analysis reveals a consistent association between neighborhood wealth and the speed of 311 complaint resolution across all complaint categories examined. On average, complaints originating in less wealthy neighborhoods take longer to be resolved than those in wealthier areas, regardless of complaint type. This pattern holds for Noise, Parking, Sanitation, and Other complaints, indicating that differences in response times are systematic rather than the result of isolated or random cases.
+The analysis reveals consistent disparities in complaint resolution by neighborhood wealth. On average, complaints from less wealthy neighborhoods take longer to resolve than those from wealthier areas, regardless of complaint type. This pattern holds for Noise, Parking, Sanitation, and Other complaints, indicating that differences are systematic rather than isolated cases.
 
-The magnitude of these differences varies across complaint categories. In particular, Sanitation and Other complaints exhibit the largest gaps in average resolution time between wealthier and less wealthy neighborhoods. These categories appear to be especially sensitive to socioeconomic context, suggesting that disparities in municipal service delivery may be more pronounced for certain types of quality-of-life issues.
+The magnitude of these differences varies by category. Sanitation and Other complaints show the largest gaps in average resolution time between wealthier and less wealthy neighborhoods, suggesting disparities may be more pronounced for certain quality-of-life issues.
 
-An examination of the full distribution of response times further reinforces these findings. For every complaint category, the median response time is higher in less wealthy neighborhoods. In addition, response times in these areas show greater variability and more extreme delays, indicating that slower resolution is not driven solely by a small number of outliers. Instead, the disparity is visible across most of the distribution, affecting the typical experience of residents in lower-income neighborhoods.
+Looking at the full distribution of response times reinforces these findings. For every complaint category, median response time is higher in less wealthy neighborhoods. These areas also show greater variability and more extreme delays, indicating that slower resolution affects the typical experience of residents, not just a few outliers.
 
-The gap analysis, defined as the difference in average resolution time between less wealthy and wealthy neighborhoods, provides a direct measure of inequality in service delivery. All estimated gaps are positive, meaning that less wealthy neighborhoods consistently experience slower complaint resolution across all categories. No complaint type shows evidence of faster resolution in less wealthy areas, further underscoring the pervasive nature of the disparity.
+The gap analysis, the difference in average resolution time between less wealthy and wealthy neighborhoods,provides a direct measure of inequality. All estimated gaps are positive, meaning less wealthy neighborhoods consistently experience slower complaint resolution across all categories. No complaint type shows faster resolution in less wealthy areas.
 
-Taken together, these results provide strong evidence that neighborhood wealth is meaningfully associated with 311 response times. Not only do wealthier neighborhoods receive faster service on average, but the advantage persists across the distribution of response times and across all complaint categories considered. These findings directly support the conclusion that certain types of quality-of-life complaints are resolved more quickly in wealthier neighborhoods, with particularly large disparities observed in sanitation-related and miscellaneous service requests.
+These results provide strong evidence that neighborhood wealth is meaningfully associated with 311 response times. Wealthier neighborhoods receive faster service on average, and this advantage persists across the distribution of response times and all complaint categories. The findings support the conclusion that certain quality-of-life complaints are resolved more quickly in wealthier neighborhoods, with particularly large disparities in sanitation-related and miscellaneous service requests.
 
 Additional methodological discussion, diagnostic validation, and extended analyses are documented in my full individual report, available here:
 [Juan Jaimes Individual Report]https://juandavidjaimes990.github.io/STA9750-2025-FALL/GI01.html
@@ -249,34 +229,34 @@ The figure below shows the most important features in the final model:
 
 # Conclusion: Assessing Equity in NYC 311 Service Delivery
 
-This analysis sought to determine whether socioeconomic status dictates the speed of 311 service resolution in New York City. The findings present a nuanced picture, challenging the conventional narrative of income-based discrimination while identifying clear opportunities for targeted intervention.
+Our analysis sought to determine whether socioeconomic status dictates the speed of 311 service resolution in New York City. The findings present a nuanced picture, challenging our bias of income-based discrimination while identifying opportunities for targeted intervention.
 
-At the citywide level, income exhibits a minimal influence on response times. Regression analysis indicates that neighborhood wealth accounts for less than 5% of the observed variation in resolution speed. High geographic variability exists across all income quartiles, suggesting that operational factors and the intrinsic complexity of the complaint type are far more predictive of outcome than resident wealth.
+At the citywide level, income exhibits a minimal influence on response times. Regression analysis indicates that neighborhood wealth accounts for less than 5% of the observed variation in resolution speed. High geographic variability exists across all income quartiles, suggesting that operational factors and the complexity of the complaint type are far more predictive of outcome than resident wealth.
 
-Crucially, this overall balance masks significant and uneven disparities at the borough level. Our detailed statistical review reveals Brooklyn as the primary outlier, where low-wealth neighborhoods experience response times 86% longer than high-wealth areas. This pronounced borough-specific gap, contrasted by a reverse or negligible trend elsewhere, strongly suggests that local administrative policy, resource deployment, and specific infrastructure challenges drive inequity, rather than a single, citywide discriminatory practice.
+Overall, this balance masks significant and uneven disparities at the borough level. Our detailed statistical review reveals Brooklyn as the primary outlier, where low-wealth neighborhoods experience response times 86% longer than high-wealth areas. This pronounced borough-specific gap strongly show that local administrative policy, resource deployment, and specific infrastructure challenges drive inequity, rather than a single, citywide discriminatory practice.
 
 Policy Recommendations for Equitable Service
 
 To move toward more equitable service delivery, policy efforts should shift from broad systemic assumptions to targeted, data-driven action:
 
-- Prioritize Brooklyn: An immediate investigation and focused resource deployment are warranted to address the disproportionately long delays experienced by low-wealth residents in this borough.
+- **Prioritize Brooklyn**: An immediate investigation and focused resource deployment are warranted to address the disproportionately long delays experienced by low-wealth residents in this borough.
 
-- Address Complaint-Specific Gaps: Resource allocation strategies should be tailored, recognizing that certain issues (like quality of life complaints) show greater income disparity than emergency repairs.
+- **Address Complaint-Specific Gaps**: Resource allocation strategies should be tailored, recognizing that certain issues (like quality of life complaints) show greater income disparity than emergency repairs.
 
-- Utilize Outlier Analysis: Resources should be directed toward specific, identified ZIP codes that deviate significantly from predicted response times, signaling localized operational failure.
+- **Utilize Outlier Analysis**: Resources should be directed toward specific, identified ZIP codes that deviate significantly from predicted response times, signaling localized operational failure.
 
-- Sustain Monitoring: The interactive tools developed during this study provide a replicable model for real-time tracking of response times by income quartile, essential for maintaining accountability.
+- **Sustain Monitoring**: The interactive tools developed during this study provide a replicable model for real-time tracking of response times by income quartile, essential for maintaining accountability.
 
-Ultimately, while the 311 system is not uniformly biased against low-income residents, it demonstrably fails specific, identifiable communities due to localized management and resource distribution failures. Addressing these geographical and complaint-type specific vulnerabilities represents the most effective path toward achieving urban equity in service delivery.
+Addressing these geographical and complaint-type specific vulnerabilities allows us to achieve equity in service delivery.
 
 # References
 
-1. NYC Open Data. (2024). *311 Service Requests from 2010 to Present*. Retrieved from https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9/
+1. NYC Open Data. (2024). *311 Service Requests from 2010 to Present*. https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9/
 
-2. NYC Open Data. (2024). *311 Resolution Satisfaction Survey*. Retrieved from https://data.cityofnewyork.us/City-Government/311-Resolution-Satisfaction-Survey/5ijn-vbdv
+2. NYC Open Data. (2024). *311 Resolution Satisfaction Survey*. https://data.cityofnewyork.us/City-Government/311-Resolution-Satisfaction-Survey/5ijn-vbdv
 
-3. U.S. Census Bureau. (2024). *American Community Survey 5-Year Estimates*. Retrieved from https://www.census.gov/programs-surveys/acs
+3. U.S. Census Bureau. (2024). *American Community Survey 5-Year Estimates*. https://www.census.gov/programs-surveys/acs
 
-
+4. Governing. 311 Study. https://www.governing.com/archive/gov-311-study.html
 
 *Document generated using Quarto on `r Sys.Date()`*
